@@ -9,7 +9,8 @@ class Navbar extends Component {
     }
 
     showNavigation = () => {
-        if (this.Auth.loggedIn()) {
+        if (this.Auth.loggedIn() && window.location.pathname === "/" ) {
+            console.log("At Home Page");
             return (
                 <ul className="navbar-nav">
                     <li className="nav-item">
@@ -21,7 +22,11 @@ class Navbar extends Component {
                     </li>
                 </ul>
             );
-        } else {
+        } 
+        else if (this.Auth.loggedIn() && window.location.pathname === "/profile") {
+            console.log("At Profile!")
+        }
+        else {
             return (
                 <ul className="navbar-nav">
                     <li className="nav-item">
