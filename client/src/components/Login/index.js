@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
+import AuthService from '../AuthService';
 import {Link} from 'react-router-dom';
-import AuthService from './AuthService';
-import API from '../utils/API';
 
-class Signup extends Component {
+class Login extends Component {
   constructor() {
     super();
     this.Auth = new AuthService();
@@ -17,37 +16,30 @@ class Signup extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    API.signUpUser(this.state.username, this.state.email, this.state.password)
+
+    this.Auth.login(this.state.email, this.state.password)
       .then(res => {
-        // once the user has signed up
-        // send them to the login page
-        this.props.history.replace('/login');
+        // once user is logged in
+        // take them to their profile page
+        this.props.history.replace(`/profile`);
       })
-      .catch(err => alert(err));
+      .catch(err => {
+        alert(err.response.data.message)
+      });
   };
 
   handleChange = event => {
     const {name, value} = event.target;
     this.setState({
-      [name]: value
+        [name]: value
     });
   };
 
   render() {
     return (
       <div className="container">
-
-        <h1>Signup</h1>
+        <h1>Login</h1>
         <form onSubmit={this.handleFormSubmit}>
-          <div className="form-group">
-            <label htmlFor="username">Username:</label>
-            <input className="form-control"
-                   placeholder="Username goes here..."
-                   name="username"
-                   type="text"
-                   id="username"
-                   onChange={this.handleChange}/>
-          </div>
           <div className="form-group">
             <label htmlFor="email">Email address:</label>
             <input className="form-control"
@@ -68,10 +60,11 @@ class Signup extends Component {
           </div>
           <button type="submit" className="btn btn-primary">Submit</button>
         </form>
-        <p><Link to="/login">Go to Login</Link></p>
+        <p><Link to="/signup">Go to Signup</Link></p>
       </div>
+
     );
   }
 }
 
-export default Signup;
+export default Login;
