@@ -1,12 +1,27 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import AuthService from '../AuthService';
+import API from '../../utils/API';
 
 class Navbar extends Component {
     constructor() {
         super();
         this.Auth = new AuthService();
     }
+
+    state = {
+        username: ""
+      };
+
+    componentDidMount() {
+        API.getUser(this.props.user).then(res => {
+            console.log(res.data)
+          this.setState({
+            username: res.data.username
+          })
+        //   console.log(username)
+        });
+      }
 
     showNavigation = () => {
         if (this.Auth.loggedIn() && window.location.pathname === "/" ) {
@@ -28,6 +43,20 @@ class Navbar extends Component {
         } 
         else if (this.Auth.loggedIn() && window.location.pathname === "/profile") {
             console.log("At Profile!")
+            return (
+                <ul className="navbar-nav">
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/profile">List Item</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/profile">Hello: {this.state.username}</Link>
+                    </li>
+                    <li className="nav-item">
+                        {/* this is not using the Link component to logout or user and then refresh the application to the start */}
+                        <a className="nav-link" href="/" onClick={() => this.Auth.logout()}>Logout</a>
+                    </li>
+                </ul>
+            );
         }
         else {
             return (
