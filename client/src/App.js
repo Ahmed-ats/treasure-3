@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import AuthService from './components/AuthService';
 import withAuth from './components/withAuth';
@@ -18,11 +17,10 @@ class App extends Component {
   };
 
   render() {
-    console.log(process.env.REACT_APP_SECRET_CODE);
+    
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome {this.props.user.email}</h2>
         </div>
         <p className="App-intro">
