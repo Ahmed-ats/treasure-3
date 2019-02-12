@@ -1,24 +1,31 @@
 import React, { Component } from "react";
+// import withAuth from '../withAuth';
 import { Link } from 'react-router-dom';
 import AuthService from '../AuthService';
 import API from '../../utils/API';
+import Login from '../Login';
+import Signup from '../Signup'
 
 class Navbar extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.Auth = new AuthService();
     }
 
+    state = {
+        username: "",
+    };
 
     componentDidMount() {
+        console.log(this.props)
         API.getUser(this.props.user).then(res => {
-            console.log(res.data)
             this.setState({
                 username: res.data.username
             })
-            //   console.log(username)
         });
     }
+
+
 
     showNavigation = () => {
         if (this.Auth.loggedIn() && window.location.pathname === "/") {
@@ -46,7 +53,7 @@ class Navbar extends Component {
                         <Link className="nav-link" to="/profile">List Item</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/profile">Hello: {this.state.username}</Link>
+                        <Link className="nav-link" to="/profile">Hello: {this.props.username} </Link>
                     </li>
                     <li className="nav-item">
                         {/* this is not using the Link component to logout or user and then refresh the application to the start */}
@@ -64,40 +71,20 @@ class Navbar extends Component {
                         </button>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/login">Login</Link>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#LogInModal">
+                            Log In
+                        </button>
                     </li>
                 </ul>
             );
         }
     };
 
-    componentWillMount() {
-        if (this.Auth.loggedIn()) {
-          this.props.history.replace('/');
-        }
-      }
-    
-      handleFormSubmit = event => {
-        event.preventDefault();
-        API.signUpUser(this.state.username, this.state.email, this.state.password)
-          .then(res => {
-            // once the user has signed up
-            // send them to the login page
-            this.props.history.replace('/login');
-          })
-          .catch(err => alert(err));
-      };
-    
-      handleChange = event => {
-        const {name, value} = event.target;
-        this.setState({
-          [name]: value
-        });
-      };
-
     render() {
         return (
             <div>
+                <Signup />
+                <Login />
                 <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
                     <div className="container">
                         <Link className="navbar-brand" to="/">React JWT App</Link>
@@ -111,62 +98,7 @@ class Navbar extends Component {
                         </div>
                     </div>
                 </nav>
-                <div className="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div className="modal-dialog modal-dialog-centered" role="document">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h5 className="modal-title" id="exampleModalCenterTitle">Sign Up</h5>
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div className="modal-body">
-                                <form onSubmit={this.handleFormSubmit}>
-                                <div className="form-group">
-                                        <label htmlFor="username">Full Name:</label>
-                                        <input className="form-control"
-                                            placeholder="Full Name:"
-                                            name="fullname"
-                                            type="text"
-                                            id="fullname"
-                                            onChange={this.handleChange} />
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="username">Username:</label>
-                                        <input className="form-control"
-                                            placeholder="Username:"
-                                            name="username"
-                                            type="text"
-                                            id="username"
-                                            onChange={this.handleChange} />
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="email">Email address:</label>
-                                        <input className="form-control"
-                                            placeholder="Email Address:"
-                                            name="email"
-                                            type="email"
-                                            id="email"
-                                            onChange={this.handleChange} />
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="pwd">Password:</label>
-                                        <input className="form-control"
-                                            placeholder="Password:"
-                                            name="password"
-                                            type="password"
-                                            id="pwd"
-                                            onChange={this.handleChange} />
-                                    </div>
-                                    <button type="submit" className="btn btn-primary">Submit</button>
-                                </form>
-                            </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         )
     }
