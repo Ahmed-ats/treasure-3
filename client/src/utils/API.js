@@ -9,5 +9,13 @@ export default {
   signUpUser: (fullname, username, email, password) => {
     // console.log(fullname)
     return axios.post('api/signup', {fullname: fullname, username: username, email: email, password: password});
+  },
+  
+  // add profile image 
+  userimage:  body => {
+    const id = body.userId
+    console.log(body)
+    return axios.put(`/api/userimage/${id} `,{imageurl: body.imgurl})
+
   }
 };

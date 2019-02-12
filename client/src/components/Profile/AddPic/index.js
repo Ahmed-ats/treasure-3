@@ -1,12 +1,9 @@
 
 
 import React from 'react';
-
-import Modal from 'react-modal';
-import './addpic.css'
-import AuthService from './../AuthService';
-import API from '../../utils/API';
-
+// import './addpic.css'
+import AuthService from '../../AuthService';
+import API from '../../../utils/API';
 // TO DO:
 // 1. REMOVE REACT NATIVE
 // 2. CHANGE TO BOOTSTRAP MODALS
@@ -24,7 +21,7 @@ const customStyles = {
   }
 };
 
-Modal.setAppElement('#root')
+
 
 class AddPic extends React.Component {
 
@@ -34,63 +31,27 @@ class AddPic extends React.Component {
     this.Auth = new AuthService();
 
     this.state = {
-      modalIsOpen: false,
+      
       picture: '',
       
      
     };
 
-    this.openModal = this.openModal.bind(this);
-    this.afterOpenModal = this.afterOpenModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
+    console.log(this.props)
     this.handleProfileImage = this.handleProfileImage.bind(this);
   }
 
 
 
-  // handleFormSubmit = event => {
-  //   event.preventDefault();
-  //   API.signUpUser(this.state.picture )
-  //     .then(res => {
-  //       // once the user has signed up
-  //       // send them to the login page
-  //       this.closeModal();
-        
-  //       // this.props.history.replace('/login');
-  //     })
-  //     .catch(err => alert(err));
-  // };
-
-//   handleInputChange = e => {
-//     const {name, value} = e.target;
-//     //the way the console log is located it looks like it is 1 letter behing but really it is not
-//     console.log(this.state)
-//     this.setState({
-//         [name]: value
-//     });
-// }
-
-openModal() {
   
-    this.setState({ modalIsOpen: true });
-  }
-
-  afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    this.subtitle.style.color = 'black';
-  }
-
-  closeModal() {
-    this.setState({ modalIsOpen: false });
-  }
-
+ 
   handleProfileImage(e) {
-
     e.preventDefault();
+
     const userId = this.props.userId;
-   
+    
     const data = new FormData();
-    data.append('file', this.uploadInput.files[0] );
+    data.append('file', this.uploadInput.files[0]);
     data.append('category', 'image');
            
     fetch('https://www.fileconvrtr.com/api/convert/file?apiKey=a8f545dbb31244a5b081a8cc6bdf37f7',{
@@ -112,7 +73,7 @@ openModal() {
         // })
       
         });
-        this.closeModal();
+        
     });
     
 }
@@ -120,41 +81,41 @@ openModal() {
   render() {
     return (
       <div>
-        <button className="addPicButton" onClick={this.openModal}><span >Add Pic</span>
-   </button>
-        <Modal
-          isOpen={this.state.modalIsOpen}
-          onAfterOpen={this.afterOpenModal}
-          onRequestClose={this.closeModal}
-          style={customStyles}
-          contentLabel="Example Modal"
-        >
-          <div className="registerModal">
-            <button className="xButton" onClick={this.closeModal}>x</button>
-            <br />
-            <br />
-            <div className="bodyOfReg">
-            <h2 className="treasureMessage" ref={subtitle => this.subtitle = subtitle}>What a beauty!</h2>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+          Add/Change Picture
+</button>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Picture</h5>
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div className="userInputTitle">Add Pic:</div>
+                <input className="informationInupt"
+                  type="file"
+                  name="picture"
+                  ref={(ref) => { this.uploadInput = ref; }}
 
-            <form>
-             
-              <div className="userInputTitle">Add Pic:</div>
-              <input className="informationInupt"
-                type = "file"
-                name="picture"
-                ref={(ref) => { this.uploadInput = ref; }}
-                
-                 />
+                />
 
-            
-            
-              <button className="doneButton" onClick={this.handleProfileImage}>Done</button>
+
+
+       
+
+              </div>
+              <div class="modal-footer">
                 
-            </form>
+                <button type="button" className="btn btn-primary" onClick={this.handleProfileImage}>Save changes</button>
+              </div>
             </div>
           </div>
-        </Modal>
-      </div>
+        </div>  
+            
+         </div>  
     );
   }
 }

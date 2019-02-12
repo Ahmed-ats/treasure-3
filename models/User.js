@@ -27,6 +27,10 @@ const UserSchema = new Schema({
     required: true,
     trim: true
   },
+  imageurl: {
+    type : String,
+    default: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/SNice.svg/220px-SNice.svg.png"
+  },
   createdAt: {
     type: Date,
     default: Date.now

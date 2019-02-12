@@ -8,6 +8,7 @@ class Login extends Component {
   }
 
   componentWillMount() {
+    
     if (this.Auth.loggedIn()) {
       // this.props.history.replace('/');
     }
@@ -25,6 +26,7 @@ class Login extends Component {
 
     this.Auth.login(this.state.email, this.state.password)
       .then(res => {
+        console.log(this.props)
         // once user is logged in
         // take them to their profile page
         // this.props.history.replace(`/profile`);
