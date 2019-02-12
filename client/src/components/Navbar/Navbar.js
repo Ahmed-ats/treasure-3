@@ -11,25 +11,16 @@ class Navbar extends Component {
         super(props);
         this.Auth = new AuthService();
     }
-
+    
     state = {
         username: "",
     };
-
-    componentDidMount() {
-        console.log(this.props)
-        API.getUser(this.props.user).then(res => {
-            this.setState({
-                username: res.data.username
-            })
-        });
-    }
 
 
 
     showNavigation = () => {
         if (this.Auth.loggedIn() && window.location.pathname === "/") {
-            console.log("At Home Page");
+           
             return (
                 <ul className="navbar-nav">
                     <li className="nav-item">
@@ -46,7 +37,7 @@ class Navbar extends Component {
             );
         }
         else if (this.Auth.loggedIn() && window.location.pathname === "/profile") {
-            console.log("At Profile!")
+           
             return (
                 <ul className="navbar-nav">
                     <li className="nav-item">
