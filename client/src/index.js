@@ -8,9 +8,9 @@ import { Route, BrowserRouter as Router } from 'react-router-dom';
 import axios from "axios";
 
 // Our Components
-import Login from './components/Login';
+// import Login from './components/Login';
 import Profile from './components/Profile';
-import Signup from './components/Signup';
+// import Signup from './components/Signup';
 import Navbar from './components/Navbar';
 
 // Here is if we have an id_token in localStorage
@@ -24,8 +24,8 @@ ReactDOM.render(
         <div>
             <Navbar />
             <Route exact path="/" component={App} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/signup" component={Signup} />
+            {/* <Route exact path="/login" component={Login} /> */}
+            {/* <Route exact path="/" component={Signup} /> */}
             <Route exact path="/profile" component={Profile} />
         </div>
     </Router>
