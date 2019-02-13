@@ -5,7 +5,7 @@ import AuthService from '../AuthService';
 import API from '../../utils/API';
 import Login from '../Login';
 import Signup from '../Signup'
-
+import ItemInputCard from '../ItemInputCard/ItemInputCard';
 class Navbar extends Component {
     constructor(props) {
         super(props);
@@ -56,7 +56,9 @@ class Navbar extends Component {
             return (
                 <ul className="navbar-nav">
                     <li className="nav-item">
-                        <Link className="nav-link" to="/profile">List Item</Link>
+                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#itemInputModal">
+                            List Item
+</button>
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link" to="/profile">Hello: {this.state.username} </Link>
@@ -89,6 +91,7 @@ class Navbar extends Component {
     render() {
         return (
             <div>
+               <ItemInputCard userId ={this.props.user} />
                 <Signup />
                 <Login />
                 <nav className="navbar navbar-expand-lg navbar-dark bg-primary">

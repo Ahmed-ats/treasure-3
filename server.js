@@ -78,6 +78,19 @@ app.put('/api/userimage/:id', isAuthenticated  , (req, res) => {
      .catch(err => res.status(400).json(err));
  });
 
+ //POST ITEMS ROUTE
+app.post('/api/additem', isAuthenticated, (req, res) => {
+  
+  db.Item.create(req.body)
+    .then(dbItem => {
+      return db.User.findOneAndUpdate({_id: dbItem.userId}, { $push: { items: dbItem._id }}, { new :true});
+    })
+    .then(dbUser =>{
+      res.json(dbUser)
+    })
+    .catch(err => res.status(400).json(err));
+});
+
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
