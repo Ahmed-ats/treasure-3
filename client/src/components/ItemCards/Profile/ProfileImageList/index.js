@@ -3,6 +3,8 @@ import ImageCard from "../ProfileImageCard";
 
 const ImageList = (props) => {
 
+    console.log(props)
+
     var Image = props.itemObj.map(object => {
         return <ImageCard 
         itemName={object.itemName} 
