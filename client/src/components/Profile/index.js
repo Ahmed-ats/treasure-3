@@ -4,6 +4,7 @@ import API from '../../utils/API';
 import { Link } from 'react-router-dom';
 import ProfileImage from './ProfileImage';
 import AddPic from './AddPic';
+import ProfileImageList from '../ItemCards/Profile/ProfileImageList'
 
 
 class Profile extends Component {
@@ -12,7 +13,8 @@ class Profile extends Component {
     fullname: "",
     email: "",
     picture: "",
-    userId:""
+    userId:"",
+    items: []
   };
 
   checkIfUserExists() {
@@ -27,6 +29,7 @@ class Profile extends Component {
           zipcode: res.data.zipcode, 
           userId: res.data._id,
           picture: res.data.imageurl,
+          items: res.data.items
         })
       })
     }
@@ -36,6 +39,7 @@ class Profile extends Component {
   }
 
   render() {
+    console.log(this.state)
     return (
       <div className="container Profile">
         <h1>On the profile page!</h1>
@@ -49,6 +53,9 @@ class Profile extends Component {
         <p>Zipcode: {this.state.zipcode} </p>
 
         <Link to="/">Go home</Link>
+
+
+        <ProfileImageList itemObj={this.state.items} />
       </div>
     )
   }

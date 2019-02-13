@@ -58,7 +58,9 @@ app.post('/api/signup', (req, res) => {
 // Any route with isAuthenticated is protected and you need a valid token
 // to access
 app.get('/api/user/:id', isAuthenticated, (req, res) => {
-  db.User.findById(req.params.id).then(data => {
+  db.User.findById(req.params.id)
+  .populate("items")
+  .then(data => {
     if(data) {
       res.json(data);
     } else {
@@ -89,6 +91,14 @@ app.post('/api/additem', isAuthenticated, (req, res) => {
       res.json(dbUser)
     })
     .catch(err => res.status(400).json(err));
+});
+
+app.get('/api/allusers', (req, res) => {
+  db.User.find({})
+    .populate("items")
+    .then(data => {
+      res.json(data)})
+    .catch(err => res.statusMessage(400).json(err))
 });
 
 // Serve up static assets (usually on heroku)

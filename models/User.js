@@ -36,6 +36,12 @@ const UserSchema = new Schema({
     type : String,
     default: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/SNice.svg/220px-SNice.svg.png"
   },
+  items: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Item"
+    }
+  ],
   createdAt: {
     type: Date,
     default: Date.now
