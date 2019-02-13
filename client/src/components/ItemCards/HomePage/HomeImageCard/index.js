@@ -1,5 +1,4 @@
 import React from 'react';
-import SocketForm from '../SocketForms/SocketForm';
 import {Link} from "react-router-dom";
 
 const HomeImageCard = (props) => {
