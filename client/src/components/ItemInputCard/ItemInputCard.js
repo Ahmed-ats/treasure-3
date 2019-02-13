@@ -8,6 +8,7 @@ import API from '../../utils/API';
 
 
 
+
 class ItemInputCard extends React.Component {
     constructor(props) {
         super(props);
@@ -125,34 +126,56 @@ class ItemInputCard extends React.Component {
                                 
                                 <form onSubmit={this.handlePostItem}>
 
-                                    <div className="userInputTitleLogIn">zipCode:</div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Categories</label>
+                                        <select class="form-control" id="exampleFormControlSelect1">
+                                            <option>Appliancies</option>
+                                            <option>Clothes</option>
+                                            <option>Cars/Trucks</option>
+                                            <option>Furnture</option>
+                                            <option>Other</option>
+                                        </select>
+                                    </div>
 
 
-                                    <div className="userInputTitleLogIn">Item Name:</div>
-                                    <input className="informationInuptLogIn"
-                                        name="itemName"
-                                        placeholder="Item name"
-                                        value={this.state.itemName}
-                                        onChange={this.handleInputChange} />
+                                    <div className="form-group" > Item Name
+                                        <input className="form-control"
+                                            name="itemName"
+                                            placeholder="Item name"
+                                            value={this.state.itemName}
+                                            onChange={this.handleInputChange} />
+                                    </div>
 
-                                    <div className="userInputTitleLogIn"> Item Description:</div>
-                                    <input className="informationInuptLogIn"
-                                        name="itemDescription"
-                                        placeholder="Describe your item"
-                                        value={this.state.itemDescription}
-                                        onChange={this.handleInputChange}
-                                    />
 
-                                    <div className="userInputTitleLogIn"> Upload Picture:</div>
-                                    <input type="file"
+                                   
+
+                                    <div className="form-group" > Zip Code
+                                        <input className="form-control"
+                                            name="zipCode"
+                                            placeholder=" zipCode"
+                                            onChange={this.handleInputChange}
+                                            value={this.state.zipCode}
+                                        />
+                                    </div>
+
+                                  
+                                          <div class="form-group"> Item Description
+                                           
+                                            <textarea class="form-control"  rows="3"
+                                                name="itemDescription"
+                                                placeholder="Describe your item"
+                                                rows = " 3"
+                                                value={this.state.itemDescription}
+                                                onChange={this.handleInputChange}>
+                                            </textarea>
+                                        </div>
+                                 
+
+                                    <br></br>
+                                        
+                                    <div className="form-group" > Upload Picture:</div>
+                                    <input type="file" multiple
                                         ref={(ref) => { this.uploadInput = ref; }}
-                                    />
-
-                                    <input className="informationInuptLogIn"
-                                        name="zipCode"
-                                        placeholder=" zipCode"
-                                        onChange={this.handleInputChange}
-                                        value={this.state.zipCode}
                                     />
 
                                     </form>
