@@ -7,8 +7,8 @@ import Login from '../Login';
 import Signup from '../Signup'
 
 class Navbar extends Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.Auth = new AuthService();
     }
 
@@ -17,11 +17,12 @@ class Navbar extends Component {
     };
 
     componentDidMount() {
-        console.log(this.props)
-        API.getUser(this.props.user).then(res => {
+        console.log(this.state)
+        API.getUser(this.state.user).then(res => {
             this.setState({
                 username: res.data.username
             })
+            console.log(this.setState)
         });
     }
 
@@ -53,7 +54,7 @@ class Navbar extends Component {
                         <Link className="nav-link" to="/profile">List Item</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/profile">Hello: {this.props.username} </Link>
+                        <Link className="nav-link" to="/profile">Hello: {this.state.username} </Link>
                     </li>
                     <li className="nav-item">
                         {/* this is not using the Link component to logout or user and then refresh the application to the start */}
