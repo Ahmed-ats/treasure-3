@@ -9,7 +9,7 @@ class App extends Component {
 
   handleLogout = () => {
     Auth.logout();
-    this.props.history.replace('/signup');
+    this.props.history.replace('/');
   };
 
   goToEditProfile = () => {
@@ -19,7 +19,10 @@ class App extends Component {
   render() {
     
     return (
+      
+      
       <div className="App">
+     
         <div className="App-header">
           <h2>Welcome {this.props.user.email}</h2>
         </div>
