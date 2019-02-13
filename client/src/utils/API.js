@@ -10,7 +10,11 @@ export default {
     // console.log(fullname)
     return axios.post('api/signup', {zipcode: zipcode, fullname: fullname, username: username, email: email, password: password});
   },
-  
+
+  // Method for rendering items on home page
+  getAllUsers: () => {
+    return axios.get('/api/allusers');
+  },
   // add profile image 
   userimage:  body => {
     const id = body.userId
