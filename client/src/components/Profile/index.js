@@ -28,7 +28,7 @@ class Profile extends Component {
           userId: res.data._id,
           picture: res.data.imageurl,
         })
-    })
+      })
     }
 }
   componentDidMount() {  
