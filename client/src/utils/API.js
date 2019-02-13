@@ -6,9 +6,9 @@ export default {
     return axios.get(`/api/user/${id}`);
   },
   // sign up a user to our service
-  signUpUser: (fullname, username, email, password) => {
+  signUpUser: (zipcode, fullname, username, email, password) => {
     // console.log(fullname)
-    return axios.post('api/signup', {fullname: fullname, username: username, email: email, password: password});
+    return axios.post('api/signup', {zipcode: zipcode, fullname: fullname, username: username, email: email, password: password});
   },
   
   // add profile image 
