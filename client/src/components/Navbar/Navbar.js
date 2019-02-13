@@ -7,8 +7,8 @@ import Login from '../Login';
 import Signup from '../Signup'
 
 class Navbar extends Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.Auth = new AuthService();
     }
     
