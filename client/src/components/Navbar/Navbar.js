@@ -5,7 +5,7 @@ import AuthService from '../AuthService';
 import API from '../../utils/API';
 import Login from '../Login';
 import Signup from '../Signup'
-
+import ItemInputCard from '../ItemInputCard/ItemInputCard';
 class Navbar extends Component {
     constructor() {
         super();
@@ -56,18 +56,19 @@ class Navbar extends Component {
            
             return (
                 <ul className="navbar-nav">
-                <li className="nav-item dropdown">
-                    <a className="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hello, 
-                    {" " +this.state.username}
-                    </a>
-                    <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <Link className="dropdown-item" to="/">Home</Link>
-                        <a className="dropdown-item" href="/" onClick={() => this.Auth.logout()}>Logout</a>
-                        {/* <div className="dropdown-divider"></div>
-                        <a className="dropdown-item" href="#">Something else here</a> */}
-                    </div>
-                </li>
-            </ul>
+                    <li className="nav-item">
+                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#itemInputModal">
+                            List Item
+</button>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/profile">Hello: {this.state.username} </Link>
+                    </li>
+                    <li className="nav-item">
+                        {/* this is not using the Link component to logout or user and then refresh the application to the start */}
+                        <a className="nav-link" href="/" onClick={() => this.Auth.logout()}>Logout</a>
+                    </li>
+                </ul>
             );
         }
         else {
@@ -91,6 +92,7 @@ class Navbar extends Component {
     render() {
         return (
             <div>
+               <ItemInputCard userId ={this.props.user} />
                 <Signup />
                 <Login />
                 <nav className="navbar navbar-expand-lg navbar-dark bg-primary">

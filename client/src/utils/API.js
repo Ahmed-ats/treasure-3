@@ -17,5 +17,11 @@ export default {
     console.log(body)
     return axios.put(`/api/userimage/${id} `,{imageurl: body.imgurl})
 
-  }
+  },
+
+  // Adds new item and pushes item.id to array in Users  
+  postItem: (body) => {
+    console.log(body)
+    return axios.post("/api/additem", { itemName: body.itemName, itemDescription: body.itemDescription, userId:body.userId, zipCode: body.zipCode, itemPicture: body.itemPicture })
+  },
 };

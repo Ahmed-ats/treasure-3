@@ -37,7 +37,7 @@ class AddPic extends React.Component {
      
     };
 
-    console.log(this.props)
+    
     this.handleProfileImage = this.handleProfileImage.bind(this);
   }
 
@@ -66,13 +66,15 @@ class AddPic extends React.Component {
        userId,
        imgurl
      }
-        API.userimage(userPicId)
+        API.userimage(userPicId).then( res => {
+         window.location.reload()
+        })
       
-        // this.setState({
-        //   picture: body.s3Url  
-        // })
-      
+       
+  
         });
+
+       
         
     });
     
