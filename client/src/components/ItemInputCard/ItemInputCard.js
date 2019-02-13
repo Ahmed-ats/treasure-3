@@ -1,6 +1,11 @@
 import React from 'react';
 import API from '../../utils/API';
+import { FilePond , registerPlugin} from 'react-filepond';
+import 'filepond/dist/filepond.min.css';
 
+import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
+import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css';
+registerPlugin(FilePondPluginImagePreview)
 
 
 
@@ -33,6 +38,7 @@ class ItemInputCard extends React.Component {
         });
         
     }
+    
 
     handlePostItem = () => {
         const itemPicture = this.state.itemPicture;
@@ -77,12 +83,13 @@ class ItemInputCard extends React.Component {
     //     })
 
     // }
+    
 
     handleUploadImage(e) {
-
+        console.log(this.pond)
         e.preventDefault();
         const data = new FormData();
-        data.append('file', this.uploadInput.files[0] );
+        data.append('file', this.pond );
         data.append('category', 'image');
                
         fetch('https://www.fileconvrtr.com/api/convert/file?apiKey=a8f545dbb31244a5b081a8cc6bdf37f7',{
@@ -172,12 +179,16 @@ class ItemInputCard extends React.Component {
                                  
 
                                     <br></br>
+                                   
+                                    <FilePond  allowMultiple={true} ref={(ref) => { this.pond = ref; }}/>
                                         
+{/* 
                                     <div className="form-group" > Upload Picture:</div>
                                     <input type="file" multiple
                                         ref={(ref) => { this.uploadInput = ref; }}
-                                    />
-
+                                        
+                                    /> */}
+                                        
                                     </form>
                                     
 
