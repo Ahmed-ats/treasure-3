@@ -12,7 +12,9 @@ export default function withAuth(AuthComponent) {
         }
         componentWillMount() {
             if (!Auth.loggedIn()) {
-                this.props.history.replace('/signup');
+                console.log(window.location)
+                window.location.pathname.replace("/")
+                // this.props.history.replace('/signup');
             }
             else {
                 try {
@@ -23,7 +25,7 @@ export default function withAuth(AuthComponent) {
                 }
                 catch(err){
                     Auth.logout();
-                    this.props.history.replace('/signup');
+                    // this.props.history.replace('/signup');
                 }
             }
         }
@@ -35,7 +37,9 @@ export default function withAuth(AuthComponent) {
                 );
             }
             else {
-                return null;
+                return (
+                    <AuthComponent history={this.props.history} user={this.state.user} match={this.props.match}/>
+                );
             }
         }
     };

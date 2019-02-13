@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import withAuth from '../withAuth';
+import withAuth from '../withAuth';
 import { Link } from 'react-router-dom';
 import AuthService from '../AuthService';
 import API from '../../utils/API';
@@ -16,11 +16,26 @@ class Navbar extends Component {
         username: "",
     };
 
+    checkIfUserExists() {
+        if (this.props.user !== null) {
+            API.getUser(this.props.user.id).then(res => {
+                this.setState({
+                    username: res.data.username,
+                    fullname: res.data.fullname,
+                    email: res.data.email
+                })
+            })
+        }
+    }
+
+    componentDidMount() {
+       this.checkIfUserExists();
+    }
 
 
     showNavigation = () => {
+        
         if (this.Auth.loggedIn() && window.location.pathname === "/") {
-           
             return (
                 <ul className="navbar-nav">
                     <li className="nav-item">
@@ -44,7 +59,7 @@ class Navbar extends Component {
                         <Link className="nav-link" to="/profile">List Item</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/profile">Hello: {this.props.username} </Link>
+                        <Link className="nav-link" to="/profile">Hello: {this.state.username} </Link>
                     </li>
                     <li className="nav-item">
                         {/* this is not using the Link component to logout or user and then refresh the application to the start */}
@@ -95,4 +110,4 @@ class Navbar extends Component {
     }
 }
 
-export default Navbar;
+export default withAuth(Navbar);
