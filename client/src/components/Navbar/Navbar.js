@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import withAuth from '../withAuth';
+import withAuth from '../withAuth';
 import { Link } from 'react-router-dom';
 import AuthService from '../AuthService';
 import API from '../../utils/API';
@@ -16,21 +16,26 @@ class Navbar extends Component {
         username: "",
     };
 
-    componentDidMount() {
-        console.log(this.state)
-        API.getUser(this.state.user).then(res => {
-            this.setState({
-                username: res.data.username
+    checkIfUserExists() {
+        if (this.props.user !== null) {
+            API.getUser(this.props.user.id).then(res => {
+                this.setState({
+                    username: res.data.username,
+                    fullname: res.data.fullname,
+                    email: res.data.email
+                })
             })
-            console.log(this.setState)
-        });
+        }
+    }
+
+    componentDidMount() {
+       this.checkIfUserExists();
     }
 
 
-
     showNavigation = () => {
+        
         if (this.Auth.loggedIn() && window.location.pathname === "/") {
-           
             return (
                 <ul className="navbar-nav">
                     <li className="nav-item">
@@ -105,4 +110,4 @@ class Navbar extends Component {
     }
 }
 
-export default Navbar;
+export default withAuth(Navbar);
