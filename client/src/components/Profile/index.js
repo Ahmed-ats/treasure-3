@@ -15,18 +15,24 @@ class Profile extends Component {
     userId:""
   };
 
-  componentDidMount() {
-  
-    API.getUser(this.props.user.id).then(res => {
-      this.setState({
-        fullname: res.data.fullname,
-        email: res.data.email,
-        zipcode: res.data.zipcode, 
-        userId: res.data._id,
-        picture: res.data.imageurl,
-      })
-     
-    });
+  checkIfUserExists() {
+    if (!this.props.user) {
+      window.location.replace("/")
+    }
+    else {
+      API.getUser(this.props.user.id).then(res => {
+        this.setState({
+          fullname: res.data.fullname,
+          email: res.data.email,
+          zipcode: res.data.zipcode, 
+          userId: res.data._id,
+          picture: res.data.imageurl,
+        })
+    })
+    }
+}
+  componentDidMount() {  
+    this.checkIfUserExists();
   }
 
   render() {
