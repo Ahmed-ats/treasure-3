@@ -38,15 +38,16 @@ class Navbar extends Component {
         if (this.Auth.loggedIn() && window.location.pathname === "/") {
             return (
                 <ul className="navbar-nav">
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/profile">Messages</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/profile">List Item</Link>
-                    </li>
-                    <li className="nav-item">
-                        {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-                        <a className="nav-link" href="/" onClick={() => this.Auth.logout()}>Logout</a>
+                    <li className="nav-item dropdown">
+                        <a className="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hello, 
+                        {" " +this.state.username}
+                        </a>
+                        <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <Link className="dropdown-item" to="/profile">Profile</Link>
+                            <a className="dropdown-item" href="/" onClick={() => this.Auth.logout()}>Logout</a>
+                            {/* <div className="dropdown-divider"></div>
+                            <a className="dropdown-item" href="#">Something else here</a> */}
+                        </div>
                     </li>
                 </ul>
             );
@@ -55,17 +56,18 @@ class Navbar extends Component {
            
             return (
                 <ul className="navbar-nav">
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/profile">List Item</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/profile">Hello: {this.state.username} </Link>
-                    </li>
-                    <li className="nav-item">
-                        {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-                        <a className="nav-link" href="/" onClick={() => this.Auth.logout()}>Logout</a>
-                    </li>
-                </ul>
+                <li className="nav-item dropdown">
+                    <a className="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hello, 
+                    {" " +this.state.username}
+                    </a>
+                    <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <Link className="dropdown-item" to="/">Home</Link>
+                        <a className="dropdown-item" href="/" onClick={() => this.Auth.logout()}>Logout</a>
+                        {/* <div className="dropdown-divider"></div>
+                        <a className="dropdown-item" href="#">Something else here</a> */}
+                    </div>
+                </li>
+            </ul>
             );
         }
         else {
