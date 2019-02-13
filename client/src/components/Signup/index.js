@@ -22,11 +22,7 @@ class Signup extends Component {
         this.Auth.login(this.state.email, this.state.password).then(res => {
           console.log(res.data);
           window.location.replace("/");
-          
         })  
-        // once the user has signed up
-        // send them to the login page
-        // this.props.history.replace('/');
       })
       .catch(err => alert(err));
   };

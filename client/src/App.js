@@ -25,8 +25,7 @@ class App extends Component {
           <h2>Welcome </h2>
         </div>
         <p className="App-intro">
-          <button type="button" className="btn btn-primary" onClick={this.goToEditProfile}>Go to Profile</button>
-          <button type="button" className="btn btn-danger" onClick={this.handleLogout}>Logout</button>
+          
         </p>
       </div>
     );
