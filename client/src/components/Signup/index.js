@@ -16,7 +16,7 @@ class Signup extends Component {
 
   handleFormSignUp = event => {
     event.preventDefault();
-    API.signUpUser(this.state.fullname, this.state.username, this.state.email, this.state.password)
+    API.signUpUser(this.state.zipcode, this.state.fullname, this.state.username, this.state.email, this.state.password)
       .then(res => {
         console.log(res)
         this.Auth.login(this.state.email, this.state.password).then(res => {
@@ -87,6 +87,15 @@ class Signup extends Component {
                       name="password"
                       type="password"
                       id="pwd"
+                      onChange={this.handleChange} />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="zipcode">Zip code:</label>
+                    <input className="form-control"
+                      placeholder="Zip code:"
+                      name="zipcode"
+                      type="zipcode"
+                      id="zipcode"
                       onChange={this.handleChange} />
                   </div>
                   <button type="submit" className="btn btn-primary">Submit</button>
