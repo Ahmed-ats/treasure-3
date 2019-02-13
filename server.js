@@ -66,6 +66,17 @@ app.get('/api/user/:id', isAuthenticated, (req, res) => {
     }
   }).catch(err => res.status(400).send(err));
 });
+ 
+// update the user data with image 
+app.put('/api/userimage/:id', isAuthenticated  , (req, res) => {
+  // console.log(req.body)
+   db.User.findOneAndUpdate({_id:req.params.id}, req.body)
+     .then(data => {
+       res.json(data)
+     })
+   
+     .catch(err => res.status(400).json(err));
+ });
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {

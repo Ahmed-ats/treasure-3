@@ -11,7 +11,7 @@ class Navbar extends Component {
         super();
         this.Auth = new AuthService();
     }
-
+    
     state = {
         username: "",
     };
@@ -30,7 +30,7 @@ class Navbar extends Component {
 
     showNavigation = () => {
         if (this.Auth.loggedIn() && window.location.pathname === "/") {
-            console.log("At Home Page");
+           
             return (
                 <ul className="navbar-nav">
                     <li className="nav-item">
@@ -47,7 +47,7 @@ class Navbar extends Component {
             );
         }
         else if (this.Auth.loggedIn() && window.location.pathname === "/profile") {
-            console.log("At Profile!")
+           
             return (
                 <ul className="navbar-nav">
                     <li className="nav-item">
