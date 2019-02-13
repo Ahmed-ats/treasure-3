@@ -30,7 +30,7 @@ class Login extends Component {
         // once user is logged in
         // take them to their profile page
         // this.props.history.replace(`/profile`);
-        window.location.replace(`/profile`)
+        window.location.replace(`/`)
       })
       .catch(err => {
         alert(err.response.data.message)

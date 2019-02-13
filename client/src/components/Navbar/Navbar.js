@@ -77,7 +77,7 @@ class Navbar extends Component {
                         </button>
                     </li>
                     <li className="nav-item">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#LogInModal">
+                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#LogInModal">
                             Log In
                         </button>
                     </li>
