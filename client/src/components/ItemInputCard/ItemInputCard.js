@@ -1,5 +1,11 @@
 import React from 'react';
 import API from '../../utils/API';
+import { FilePond , registerPlugin} from 'react-filepond';
+import 'filepond/dist/filepond.min.css';
+
+import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
+import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css';
+registerPlugin(FilePondPluginImagePreview)
 
 
 
@@ -18,6 +24,7 @@ class ItemInputCard extends React.Component {
             itemDescription: '',
             itemPicture: '',
             zipCode: '',
+            files: []
         };
 
          
@@ -32,12 +39,13 @@ class ItemInputCard extends React.Component {
         });
         
     }
+    
 
     handlePostItem = () => {
         const itemPicture = this.state.itemPicture;
         const { itemName, itemDescription, zipCode, } = this.state;
         let userId = this.props.userId.id
-        console.log(userId)
+       
         const newItem = {
             itemName, 
             itemDescription,
@@ -78,12 +86,13 @@ class ItemInputCard extends React.Component {
     //     })
 
     // }
+    
 
     handleUploadImage(e) {
-
+        console.log(this.state.files)
         e.preventDefault();
         const data = new FormData();
-        data.append('file', this.uploadInput.files[0] );
+        data.append('file', this.state.files[0] );
         data.append('category', 'image');
                
         fetch('https://www.fileconvrtr.com/api/convert/file?apiKey=a8f545dbb31244a5b081a8cc6bdf37f7',{
@@ -93,6 +102,7 @@ class ItemInputCard extends React.Component {
             
         response.json()
         .then((body) => {
+            console.log(body)
             this.setState({
                 itemPicture: body.s3Url  
             })
@@ -127,36 +137,72 @@ class ItemInputCard extends React.Component {
                                 
                                 <form onSubmit={this.handlePostItem}>
 
-                                    <div className="userInputTitleLogIn">zipCode:</div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Categories</label>
+                                        <select class="form-control" id="exampleFormControlSelect1">
+                                            <option>Appliancies</option>
+                                            <option>Clothes</option>
+                                            <option>Cars/Trucks</option>
+                                            <option>Furnture</option>
+                                            <option>Other</option>
+                                        </select>
+                                    </div>
 
 
-                                    <div className="userInputTitleLogIn">Item Name:</div>
-                                    <input className="informationInuptLogIn"
-                                        name="itemName"
-                                        placeholder="Item name"
-                                        value={this.state.itemName}
-                                        onChange={this.handleInputChange} />
+                                    <div className="form-group" > Item Name
+                                        <input className="form-control"
+                                            name="itemName"
+                                            placeholder="Item name"
+                                            value={this.state.itemName}
+                                            onChange={this.handleInputChange} />
+                                    </div>
 
-                                    <div className="userInputTitleLogIn"> Item Description:</div>
-                                    <input className="informationInuptLogIn"
-                                        name="itemDescription"
-                                        placeholder="Describe your item"
-                                        value={this.state.itemDescription}
-                                        onChange={this.handleInputChange}
+
+                                   
+
+                                    <div className="form-group" > Zip Code
+                                        <input className="form-control"
+                                            name="zipCode"
+                                            placeholder=" zipCode"
+                                            onChange={this.handleInputChange}
+                                            value={this.state.zipCode}
+                                        />
+                                    </div>
+
+                                  
+                                        <div class="form-group"> Item Description
+                                           
+                                            <textarea class="form-control"  
+                                                name="itemDescription"
+                                                placeholder="Describe your item"
+                                                rows = " 3"
+                                                value={this.state.itemDescription}
+                                                onChange={this.handleInputChange}>
+                                            </textarea>
+                                        </div>
+                                 
+
+                                    <br></br>
+                                   
+                                    <FilePond ref={ref => this.pond = ref}
+                                        files={this.state.files}
+                                        allowMultiple={true}
+
+
+                                            onupdatefiles={fileItems => {
+                                            // Set currently active file objects to this.state
+                                            this.setState({
+                                                files: fileItems.map(fileItem => fileItem.file)
+                                            });
+                                        }}
                                     />
+                                   
 
-                                    <div className="userInputTitleLogIn"> Upload Picture:</div>
-                                    <input type="file"
-                                        ref={(ref) => { this.uploadInput = ref; }}
-                                    />
-
-                                    <input className="informationInuptLogIn"
-                                        name="zipCode"
-                                        placeholder=" zipCode"
-                                        onChange={this.handleInputChange}
-                                        value={this.state.zipCode}
-                                    />
-
+                                    
+                                    
+                                  
+                            
+                                        
                                     </form>
                                     
 

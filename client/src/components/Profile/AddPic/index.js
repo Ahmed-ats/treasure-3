@@ -31,71 +31,58 @@ class AddPic extends React.Component {
     this.Auth = new AuthService();
 
     this.state = {
-      
-      picture: '',
-      
-     
-    };
 
-    
-    this.handleProfileImage = this.handleProfileImage.bind(this);
+      picture: '',
+
+
+    };
   }
 
-
-
-  
- 
-  handleProfileImage(e) {
+  handleProfileImage = (e) => {
     e.preventDefault();
 
     const userId = this.props.userId;
-    
+
     const data = new FormData();
     data.append('file', this.uploadInput.files[0]);
     data.append('category', 'image');
-           
-    fetch('https://www.fileconvrtr.com/api/convert/file?apiKey=a8f545dbb31244a5b081a8cc6bdf37f7',{
+
+    fetch('https://www.fileconvrtr.com/api/convert/file?apiKey=a8f545dbb31244a5b081a8cc6bdf37f7', {
       method: 'POST',
       body: data
     }).then((response) => {
-  
-    response.json()
-    .then((body) => {
-     const imgurl = body.s3Url
-     const userPicId = {
-       userId,
-       imgurl
-     }
-        API.userimage(userPicId).then( res => {
-         window.location.reload()
-        })
-      
-       
-  
+      response.json()
+        .then((body) => {
+          const imgurl = body.s3Url
+          const userPicId = {
+            userId,
+            imgurl
+          }
+          API.userimage(userPicId).then(res => {
+            if (this.props.onSuccess) {
+              this.props.onSuccess()
+            }
+          })
         });
-
-       
-        
     });
-    
-}
+  }
 
   render() {
     return (
       <div>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
           Add/Change Picture
 </button>
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add Picture</h5>
+        <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">Add Picture</h5>
                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div class="modal-body">
+              <div className="modal-body">
                 <div className="userInputTitle">Add Pic:</div>
                 <input className="informationInupt"
                   type="file"
@@ -106,18 +93,18 @@ class AddPic extends React.Component {
 
 
 
-       
+
 
               </div>
-              <div class="modal-footer">
-                
+              <div className="modal-footer">
+
                 <button type="button" className="btn btn-primary" onClick={this.handleProfileImage}>Save changes</button>
               </div>
             </div>
           </div>
-        </div>  
-            
-         </div>  
+        </div>
+
+      </div>
     );
   }
 }
