@@ -24,6 +24,7 @@ class ItemInputCard extends React.Component {
             itemDescription: '',
             itemPicture: '',
             zipCode: '',
+            files: []
         };
 
          
@@ -86,10 +87,10 @@ class ItemInputCard extends React.Component {
     
 
     handleUploadImage(e) {
-        console.log(this.pond)
+        console.log(this.state.files)
         e.preventDefault();
         const data = new FormData();
-        data.append('file', this.pond );
+        data.append('file', this.state.files[0] );
         data.append('category', 'image');
                
         fetch('https://www.fileconvrtr.com/api/convert/file?apiKey=a8f545dbb31244a5b081a8cc6bdf37f7',{
@@ -99,6 +100,7 @@ class ItemInputCard extends React.Component {
             
         response.json()
         .then((body) => {
+            console.log(body)
             this.setState({
                 itemPicture: body.s3Url  
             })
@@ -166,9 +168,9 @@ class ItemInputCard extends React.Component {
                                     </div>
 
                                   
-                                          <div class="form-group"> Item Description
+                                        <div class="form-group"> Item Description
                                            
-                                            <textarea class="form-control"  rows="3"
+                                            <textarea class="form-control"  
                                                 name="itemDescription"
                                                 placeholder="Describe your item"
                                                 rows = " 3"
@@ -180,18 +182,24 @@ class ItemInputCard extends React.Component {
 
                                     <br></br>
                                    
-                                    <FilePond  allowMultiple={true} ref={(ref) => { this.pond = ref; }}
-                                   
-                                    
-                                    
+                                    <FilePond ref={ref => this.pond = ref}
+                                        files={this.state.files}
+                                        allowMultiple={true}
+
+
+                                            onupdatefiles={fileItems => {
+                                            // Set currently active file objects to this.state
+                                            this.setState({
+                                                files: fileItems.map(fileItem => fileItem.file)
+                                            });
+                                        }}
                                     />
-                                        
-{/* 
-                                    <div className="form-group" > Upload Picture:</div>
-                                    <input type="file" multiple
-                                        ref={(ref) => { this.uploadInput = ref; }}
-                                        
-                                    /> */}
+                                   
+
+                                    
+                                    
+                                  
+                            
                                         
                                     </form>
                                     

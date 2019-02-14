@@ -13,40 +13,44 @@ class Profile extends Component {
     fullname: "",
     email: "",
     picture: "",
-    userId:"",
+    userId: "",
     items: []
   };
+
+  getUserData = () => {
+    API.getUser(this.props.user.id).then(res => {
+      this.setState({
+        fullname: res.data.fullname,
+        email: res.data.email,
+        zipcode: res.data.zipcode,
+        userId: res.data._id,
+        picture: res.data.imageurl,
+        items: res.data.items
+      })
+    })
+  }
 
   checkIfUserExists() {
     if (!this.props.user) {
       window.location.replace("/")
     }
     else {
-      API.getUser(this.props.user.id).then(res => {
-        this.setState({
-          fullname: res.data.fullname,
-          email: res.data.email,
-          zipcode: res.data.zipcode, 
-          userId: res.data._id,
-          picture: res.data.imageurl,
-          items: res.data.items
-        })
-      })
+      this.getUserData()
     }
-}
-  componentDidMount() {  
+  }
+  componentDidMount() {
     this.checkIfUserExists();
   }
 
   render() {
-   
+
     return (
       <div className="container Profile">
         <h1>On the profile page!</h1>
-        
-        <ProfileImage  userpicture = {this.state.picture} />
-         <br></br>
-        <AddPic userId={this.state.userId}/>
+
+        <ProfileImage userpicture={this.state.picture} />
+        <br></br>
+        <AddPic userId={this.state.userId} onSuccess={this.getUserData} />
 
         <p>Full Name: {this.state.fullname}</p>
         <p>Email: {this.state.email}</p>

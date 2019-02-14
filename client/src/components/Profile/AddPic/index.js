@@ -31,54 +31,41 @@ class AddPic extends React.Component {
     this.Auth = new AuthService();
 
     this.state = {
-      
-      picture: '',
-      
-     
-    };
 
-    
-    this.handleProfileImage = this.handleProfileImage.bind(this);
+      picture: '',
+
+
+    };
   }
 
-
-
-  
- 
-  handleProfileImage(e) {
+  handleProfileImage = (e) => {
     e.preventDefault();
 
     const userId = this.props.userId;
-    
+
     const data = new FormData();
     data.append('file', this.uploadInput.files[0]);
     data.append('category', 'image');
-           
-    fetch('https://www.fileconvrtr.com/api/convert/file?apiKey=a8f545dbb31244a5b081a8cc6bdf37f7',{
+
+    fetch('https://www.fileconvrtr.com/api/convert/file?apiKey=a8f545dbb31244a5b081a8cc6bdf37f7', {
       method: 'POST',
       body: data
     }).then((response) => {
-  
-    response.json()
-    .then((body) => {
-     const imgurl = body.s3Url
-     const userPicId = {
-       userId,
-       imgurl
-     }
-        API.userimage(userPicId).then( res => {
-         window.location.reload()
-        })
-      
-       
-  
+      response.json()
+        .then((body) => {
+          const imgurl = body.s3Url
+          const userPicId = {
+            userId,
+            imgurl
+          }
+          API.userimage(userPicId).then(res => {
+            if (this.props.onSuccess) {
+              this.props.onSuccess()
+            }
+          })
         });
-
-       
-        
     });
-    
-}
+  }
 
   render() {
     return (
@@ -106,18 +93,18 @@ class AddPic extends React.Component {
 
 
 
-       
+
 
               </div>
               <div className="modal-footer">
-                
+
                 <button type="button" className="btn btn-primary" onClick={this.handleProfileImage}>Save changes</button>
               </div>
             </div>
           </div>
-        </div>  
-            
-         </div>  
+        </div>
+
+      </div>
     );
   }
 }
