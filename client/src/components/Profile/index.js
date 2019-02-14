@@ -39,7 +39,7 @@ class Profile extends Component {
   }
 
   render() {
-    console.log(this.state)
+   
     return (
       <div className="container Profile">
         <h1>On the profile page!</h1>

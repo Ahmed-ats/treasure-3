@@ -2,7 +2,7 @@ import axios from 'axios';
 export default {
   // Gets a single user by id
   getUser: (id) => {
-    console.log(id)
+    
     return axios.get(`/api/user/${id}`);
   },
   // sign up a user to our service
@@ -18,14 +18,14 @@ export default {
   // add profile image 
   userimage:  body => {
     const id = body.userId
-    console.log(body)
+    
     return axios.put(`/api/userimage/${id} `,{imageurl: body.imgurl})
 
   },
 
   // Adds new item and pushes item.id to array in Users  
   postItem: (body) => {
-    console.log(body)
+    
     return axios.post("/api/additem", { itemName: body.itemName, itemDescription: body.itemDescription, userId:body.userId, zipCode: body.zipCode, itemPicture: body.itemPicture })
   },
 };

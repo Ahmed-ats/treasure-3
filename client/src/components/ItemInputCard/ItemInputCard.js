@@ -44,7 +44,7 @@ class ItemInputCard extends React.Component {
         const itemPicture = this.state.itemPicture;
         const { itemName, itemDescription, zipCode, } = this.state;
         let userId = this.props.userId.id
-        console.log(userId)
+       
         const newItem = {
             itemName, 
             itemDescription,
@@ -180,7 +180,11 @@ class ItemInputCard extends React.Component {
 
                                     <br></br>
                                    
-                                    <FilePond  allowMultiple={true} ref={(ref) => { this.pond = ref; }}/>
+                                    <FilePond  allowMultiple={true} ref={(ref) => { this.pond = ref; }}
+                                   
+                                    
+                                    
+                                    />
                                         
 {/* 
                                     <div className="form-group" > Upload Picture:</div>
