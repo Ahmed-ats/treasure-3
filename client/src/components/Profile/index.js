@@ -4,6 +4,7 @@ import API from '../../utils/API';
 import { Link } from 'react-router-dom';
 import ProfileImage from './ProfileImage';
 import AddPic from './AddPic';
+import EditItem from '../ItemCards/EditItems'
 import ProfileImageList from '../ItemCards/Profile/ProfileImageList'
 
 
@@ -39,7 +40,6 @@ class Profile extends Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <div className="container Profile">
         <h1>On the profile page!</h1>

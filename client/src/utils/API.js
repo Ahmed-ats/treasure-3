@@ -7,7 +7,6 @@ export default {
   },
   // sign up a user to our service
   signUpUser: (zipcode, fullname, username, email, password) => {
-    // console.log(fullname)
     return axios.post('api/signup', {zipcode: zipcode, fullname: fullname, username: username, email: email, password: password});
   },
 
@@ -18,9 +17,18 @@ export default {
   // add profile image 
   userimage:  body => {
     const id = body.userId
-    console.log(body)
     return axios.put(`/api/userimage/${id} `,{imageurl: body.imgurl})
 
+  },
+
+  deleteItem: (id) => {
+    return axios.get(`/api/deleteitem/${id}`)
+  },
+
+  editItem: (body) => {
+    console.log(body)
+    // IS ABLE TO GRAB BODY INFORMATION FROM FRONT-END...BREAKS IN SERVER.JS, REQ.BODY RETURNS NULL
+    return axios.get(`/api/edititem/${body.id}`, {itemName: body.itemName})
   },
 
   // Adds new item and pushes item.id to array in Users  

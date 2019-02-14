@@ -5,6 +5,7 @@ import withAuth from './components/withAuth';
 import HomeImageList from './components/ItemCards/HomePage/HomeImageList'
 import API from './utils/API'
 
+
 const Auth = new AuthService();
 
 class App extends Component {

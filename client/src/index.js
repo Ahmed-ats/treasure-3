@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
 
 import registerServiceWorker from './registerServiceWorker';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
@@ -12,6 +15,8 @@ import axios from "axios";
 import Profile from './components/Profile';
 // import Signup from './components/Signup';
 import Navbar from './components/Navbar';
+
+library.add(faTrash, faEdit);
 
 // Here is if we have an id_token in localStorage
 if(localStorage.getItem("id_token")) {
