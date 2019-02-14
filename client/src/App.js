@@ -44,6 +44,7 @@ class App extends Component {
         </div>
         <HomeImageList users={this.state.items}/>
       </div>
+    
     );
   }
 }
