@@ -4,15 +4,16 @@ import { Link } from 'react-router-dom';
 import AuthService from '../AuthService';
 import API from '../../utils/API';
 import Login from '../Login';
-import Signup from '../Signup';
-import './navbar.css'
+import Signup from '../Signup'
+import ItemInputCard from '../ItemInputCard/ItemInputCard';
+import './navbar.css';
 
 class Navbar extends Component {
     constructor() {
         super();
         this.Auth = new AuthService();
     }
-    
+
     state = {
         username: "",
     };
@@ -30,18 +31,18 @@ class Navbar extends Component {
     }
 
     componentDidMount() {
-       this.checkIfUserExists();
+        this.checkIfUserExists();
     }
 
 
     showNavigation = () => {
-        
+
         if (this.Auth.loggedIn() && window.location.pathname === "/") {
             return (
                 <ul className="navbar-nav">
                     <li className="nav-item dropdown">
-                        <a className="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hello, 
-                        {" " +this.state.username}
+                        <a className="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hello,
+                        {" " + this.state.username}
                         </a>
                         <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                             <Link className="dropdown-item" to="/profile">Profile</Link>
@@ -54,21 +55,22 @@ class Navbar extends Component {
             );
         }
         else if (this.Auth.loggedIn() && window.location.pathname === "/profile") {
-           
+
             return (
                 <ul className="navbar-nav">
-                <li className="nav-item dropdown">
-                    <a className="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hello, 
-                    {" " +this.state.username}
-                    </a>
-                    <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <Link className="dropdown-item" to="/">Home</Link>
-                        <a className="dropdown-item" href="/" onClick={() => this.Auth.logout()}>Logout</a>
-                        {/* <div className="dropdown-divider"></div>
-                        <a className="dropdown-item" href="#">Something else here</a> */}
-                    </div>
-                </li>
-            </ul>
+                    <li className="nav-item">
+                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#itemInputModal">
+                            List Item
+</button>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/profile">Hello: {this.state.username} </Link>
+                    </li>
+                    <li className="nav-item">
+                        {/* this is not using the Link component to logout or user and then refresh the application to the start */}
+                        <a className="nav-link" href="/" onClick={() => this.Auth.logout()}>Logout</a>
+                    </li>
+                </ul>
             );
         }
         else {
@@ -92,11 +94,12 @@ class Navbar extends Component {
     render() {
         return (
             <div>
+                <ItemInputCard userId={this.props.user} />
                 <Signup />
                 <Login />
-                <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+                <nav className="navbar my-nav navbar-expand-lg">
                     <div className="container">
-                        <Link className="navbar-brand treasureTitle" to="/">Treasure</Link>
+                        <Link className="navbar-brand" to="/">Treasure</Link>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button>

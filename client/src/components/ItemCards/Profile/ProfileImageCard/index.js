@@ -1,15 +1,15 @@
 import React from 'react';
-import './imagecard.css'
-import API from '../../utils/API';
+import API from '../../../../utils/API';
 
  
 const handleDeleteItem = (id) => {
-        API.deleteItem(id);
+    API.deleteItem(id);
       // refresh data  
       window.location.reload()
 }
 
 const ImageCard = (props) => {
+    
 
     return (
         <div>

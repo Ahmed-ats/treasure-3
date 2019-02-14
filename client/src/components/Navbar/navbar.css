@@ -1,6 +1,14 @@
-a.navbar-brand.treasureTitle{
+.navbar-brand{
     font-family: 'Pirata One', cursive;
     font-size: 37px;
-   
-};
+    color: black;
+     };
+ 
+  .my-nav{
+      background-color: red
+      ;
+  }
 
+  .nav-link{
+      color: black
+  }
