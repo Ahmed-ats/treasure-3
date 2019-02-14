@@ -59,7 +59,7 @@ class Navbar extends Component {
                     <li className="nav-item">
                         <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#itemInputModal">
                             List Item
-</button>
+                    </button>
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link" to="/profile">Hello: {this.state.username} </Link>
