@@ -14,7 +14,7 @@ const ImageCard = (props) => {
     return (
         
         <div>
-            <EditItem id={props._id}/>
+            <EditItem id={props._id} updateMethod={props.updateMethod}/>
             <div className="card" key={props.itemName}>
                 <img className="card-img-top" src={props.picture || "https://via.placeholder.com/350x350"}  alt={props.itemName}/>
                 <div className="card-body">

@@ -6,12 +6,13 @@ class EditItem extends React.Component {
 
     state = {
         id: this.props.id,
-        Value: "Hello"
+        itemName: '',
+        itemDescription: '',
+        updateCounter: this.props.updateCounter
     }
 
     handleInputChange = e => {
         const { name, value } = e.target;
-        //the way the console log is located it looks like it is 1 letter behing but really it is not
         this.setState({
             [name]: value,
         });
@@ -19,15 +20,25 @@ class EditItem extends React.Component {
     }
 
     handlePostItem = () => {
-        console.log(this.state)
+        
         const editedItem = {
             itemName: this.state.itemName,
-            id: this.state.id
+            id: this.state.id,
+            itemDescription: this.state.itemDescription,
+            
         }
         API.editItem(editedItem)
         .then(res => {
-            console.log(res)
-        });
+            this.setState({
+                id: editedItem.id,
+                itemName: '',
+                itemDescription: '',
+            })
+        })
+        .then(
+            this.props.updateMethod(this.state.id)
+        )
+        
     }
 
     render() {
@@ -45,12 +56,7 @@ class EditItem extends React.Component {
                                 </button>
                             </div>
                             <div className="modal-body">
-
                                 <form onSubmit={this.handlePostItem}>
-
-                                    <div className="userInputTitleEdit">zipCode:</div>
-
-
                                     <div className="userInputTitleEdit">Item Name:</div>
                                     <input className="informationInuptEdit"
                                     name="itemName"
@@ -60,26 +66,22 @@ class EditItem extends React.Component {
 
                                     <div className="userInputTitleEdit"> Item Description:</div>
                                     <input className="informationInuptEdit"
-                                        name="itemDescription"
-                                        placeholder="Describe your item"
-                                        
-                                    />
-
-                                    <input className="informationInuptEdit"
-                                        name="zipCode"
-                                        placeholder=" zipCode"
+                                    name="itemDescription"
+                                    placeholder="Describe your item"
+                                    onChange={this.handleInputChange}
                                     />
                                 </form>
                             </div>
 
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary"
+                                <button type="button" className="btn btn-primary"
                                 onClick={this.handlePostItem}
+                                data-dismiss="modal"
                                 >
-                                TEST
+                                Save Changes
                                 </button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                Close
+                                <button type="button" className="btn btn-secondary" data-dismiss="modal">
+                                Cancel
                                 </button>
                             </div>
                         </div>

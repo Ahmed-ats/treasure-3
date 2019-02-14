@@ -15,7 +15,8 @@ class Profile extends Component {
     email: "",
     picture: "",
     userId:"",
-    items: []
+    items: [],
+    updateCounter: 0
   };
 
   checkIfUserExists() {
@@ -30,13 +31,40 @@ class Profile extends Component {
           zipcode: res.data.zipcode, 
           userId: res.data._id,
           picture: res.data.imageurl,
-          items: res.data.items
+          items: res.data.items,
+          updated: false
         })
       })
     }
-}
-  componentDidMount() {  
+  }
+
+  checkIfItemsUpdate(id) {
+    console.log(this.state.updated)
+    this.setState({
+      updated: true
+    })
+    
+  }
+
+  componentDidUpdate() {
+    console.log(this.state.updated)
+     if (this.state.updated == true) {
+      API.getUser(this.state.userId).then(res => {
+        console.log(res)
+        this.setState({
+          items: res.data.items,
+          updated: false
+        })
+      });
+    }
+  }
+
+
+  componentDidMount(id) {
+    
+    console.log(this.state)  
     this.checkIfUserExists();
+   
   }
 
   render() {
@@ -55,7 +83,10 @@ class Profile extends Component {
         <Link to="/">Go home</Link>
 
 
-        <ProfileImageList itemObj={this.state.items} />
+        <ProfileImageList 
+        itemObj={this.state.items} 
+        updateMethod={this.checkIfItemsUpdate.bind(this)}
+        />
       </div>
     )
   }

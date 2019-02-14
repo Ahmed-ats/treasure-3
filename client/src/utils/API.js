@@ -2,7 +2,6 @@ import axios from 'axios';
 export default {
   // Gets a single user by id
   getUser: (id) => {
-    console.log(id)
     return axios.get(`/api/user/${id}`);
   },
   // sign up a user to our service
@@ -28,7 +27,7 @@ export default {
   editItem: (body) => {
     console.log(body)
     // IS ABLE TO GRAB BODY INFORMATION FROM FRONT-END...BREAKS IN SERVER.JS, REQ.BODY RETURNS NULL
-    return axios.get(`/api/edititem/${body.id}`, {itemName: body.itemName})
+    return axios.post(`/api/edititem/${body.id}`, {itemName: body.itemName, itemDescription: body.itemDescription})
   },
 
   // Adds new item and pushes item.id to array in Users  

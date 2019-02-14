@@ -97,25 +97,22 @@ app.post('/api/additem', isAuthenticated, (req, res) => {
 });
 
 //DELETE ITEMS
-app.get('/api/deleteitem/:id', isAuthenticated, (req, res) => {
-  // console.log(req.params.id)
+app.post('/api/deleteitem/:id', isAuthenticated, (req, res) => {
   db.Item.deleteOne({_id:req.params.id})
     .then(data => {
-  
       res.send(data)
     })
-  
     .catch(err => res.status(400).json(err));
 });
 
-app.get('/api/edititem/:id', isAuthenticated, (req, res) => {
-  console.log(req)
+app.post('/api/edititem/:id', isAuthenticated, (req, res) => {
+  
   db.Item.updateOne(
     {_id: req.params.id},
     {
       $set: {
         itemName: req.body.itemName,
-        // itemDescription: req.body.itemDescription
+        itemDescription: req.body.itemDescription
       }
     }
   )
