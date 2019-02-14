@@ -63,6 +63,8 @@ class ItemInputCard extends React.Component {
                 zipCode: ''
             })
         )
+
+        window.location.reload()
     }
     // handleGetItem = (e) => {
     //     const { itemName, itemDescription, itemPicture, zipCode } = this.state;
