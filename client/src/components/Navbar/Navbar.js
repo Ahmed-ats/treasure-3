@@ -6,12 +6,14 @@ import API from '../../utils/API';
 import Login from '../Login';
 import Signup from '../Signup'
 import ItemInputCard from '../ItemInputCard/ItemInputCard';
+import './navbar.css';
+
 class Navbar extends Component {
     constructor() {
         super();
         this.Auth = new AuthService();
     }
-    
+
     state = {
         username: "",
     };
@@ -29,18 +31,18 @@ class Navbar extends Component {
     }
 
     componentDidMount() {
-       this.checkIfUserExists();
+        this.checkIfUserExists();
     }
 
 
     showNavigation = () => {
-        
+
         if (this.Auth.loggedIn() && window.location.pathname === "/") {
             return (
                 <ul className="navbar-nav">
                     <li className="nav-item dropdown">
-                        <a className="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hello, 
-                        {" " +this.state.username}
+                        <a className="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hello,
+                        {" " + this.state.username}
                         </a>
                         <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                             <Link className="dropdown-item" to="/profile">Profile</Link>
@@ -53,7 +55,7 @@ class Navbar extends Component {
             );
         }
         else if (this.Auth.loggedIn() && window.location.pathname === "/profile") {
-           
+
             return (
                 <ul className="navbar-nav">
                     <li className="nav-item">
@@ -92,12 +94,12 @@ class Navbar extends Component {
     render() {
         return (
             <div>
-               <ItemInputCard userId ={this.props.user} />
+                <ItemInputCard userId={this.props.user} />
                 <Signup />
                 <Login />
-                <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+                <nav className="navbar my-nav navbar-expand-lg">
                     <div className="container">
-                        <Link className="navbar-brand" to="/">React JWT App</Link>
+                        <Link className="navbar-brand" to="/">Treasure</Link>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button>
