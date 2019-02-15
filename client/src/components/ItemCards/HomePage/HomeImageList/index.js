@@ -1,5 +1,6 @@
 import React from 'react';
 import HomeImageCard from '../HomeImageCard'
+import '../HomeImageList/index.css'
 
 const HomeImageList = (props) => {
      
@@ -12,8 +13,6 @@ const HomeImageList = (props) => {
         searchQuery={props.searchQuery}
         />
     })
-    
-
     return(
         <div className="card-columns">
           {Image}

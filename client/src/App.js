@@ -65,7 +65,6 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <Search handleSearchSubmit={this.handleSearchSubmit.bind(this)}/>
-          <h2>Welcome </h2>
         </div>
         <HomeImageList users={this.state.items} searchQuery={this.state.searchQuery}/>
       </div>
