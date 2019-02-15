@@ -131,13 +131,14 @@ app.get('/api/allusers', (req, res) => {
 });
 
 
+//ROUTE FOR SEARCHING ITEMS, MATCHES
 app.get('/api/filtereditems/:query', (req, res) => {
   db.User.find({})
   .populate({
     path: "items",
     match: {$or: [
-    { 'itemName': { $regex: '.*' + req.params.query + '.*' }},
-    { 'itemDescription' : { $regex: '.*' + req.params.query + '.*'}}
+    { 'itemName': { $regex: '.*' + req.params.query + '.*', '$options' : 'i' }},
+    { 'itemDescription' : { $regex: '.*' + req.params.query + '.*', '$options' : 'i'}}
       ]
     }
   })

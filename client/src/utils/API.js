@@ -16,9 +16,7 @@ export default {
   // add profile image 
   userimage:  body => {
     const id = body.userId
-    
     return axios.put(`/api/userimage/${id} `,{imageurl: body.imgurl})
-
   },
 
   searchItems: (query) => {
