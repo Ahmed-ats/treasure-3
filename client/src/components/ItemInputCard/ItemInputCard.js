@@ -2,10 +2,23 @@ import React from 'react';
 import API from '../../utils/API';
 import { FilePond , registerPlugin} from 'react-filepond';
 import 'filepond/dist/filepond.min.css';
-
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css';
-registerPlugin(FilePondPluginImagePreview)
+import FilePondPluginImageCrop from 'filepond-plugin-image-crop';
+
+
+registerPlugin(
+    
+    FilePondPluginImagePreview,
+    FilePondPluginImageCrop
+    )
+
+
+
+
+
+
+
 
 class ItemInputCard extends React.Component {
     constructor(props) {
@@ -149,9 +162,10 @@ class ItemInputCard extends React.Component {
                                     <br></br>
                                    
                                     <FilePond
-                                       
+                                       labelIdle={ `Drag & Drop your picture or <span>Browse</span>`}
                                         file={this.state.file}
                                         // allowMultiple={true}
+                                        // allowImageResize ={true}
                                         onupdatefiles={fileItems => {
                                             this.setState({
                                                 files: fileItems.map(fileItem => fileItem.file)

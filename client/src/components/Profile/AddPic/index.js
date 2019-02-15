@@ -1,22 +1,20 @@
-
-
 import React from 'react';
-// import './addpic.css'
 import AuthService from '../../AuthService';
 import API from '../../../utils/API';
+import { FilePond, registerPlugin } from 'react-filepond';
+import 'filepond/dist/filepond.min.css';
+import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
+import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css';
+import FilePondPluginImageResize from 'filepond-plugin-image-resize';
+import FilePondPluginImageCrop from 'filepond-plugin-image-crop';
 
+registerPlugin(
 
-// const customStyles = {
+  FilePondPluginImageResize,
+  FilePondPluginImagePreview,
+  FilePondPluginImageCrop
+);
 
-//   content: {
-//     top: '50%',
-//     left: '50%',
-//     right: 'auto',
-//     bottom: 'auto',
-//     marginRight: '-50%',
-//     transform: 'translate(-50%, -50%)'
-//   }
-// };
 
 
 
@@ -41,7 +39,7 @@ class AddPic extends React.Component {
     const userId = this.props.userId;
 
     const data = new FormData();
-    data.append('file', this.uploadInput.files[0]);
+    data.append('file', this.state.picture[0]);
     data.append('category', 'image');
 
     fetch('https://www.fileconvrtr.com/api/convert/file?apiKey=a8f545dbb31244a5b081a8cc6bdf37f7', {
@@ -80,15 +78,25 @@ class AddPic extends React.Component {
                 </button>
               </div>
               <div className="modal-body">
-                <div className="userInputTitle">Add Pic:</div>
-                <input className="informationInupt"
-                  type="file"
-                  name="picture"
-                  ref={(ref) => { this.uploadInput = ref; }}
+                <div className="userInputTitle">Add a Picture:</div>
 
+                <FilePond
+                  labelIdle={`Drag & Drop your picture or <span>Browse</span>`}
+                  imagePreviewHeight={200}
+                // imageCropAspectRatio={ '1:1'}
+                // imageResizeTargetWidth={ 200}
+                // imageResizeTargetHeight={ 200}
+                // stylePanelLayout={ ' circle'}
+                // styleButtonRemoveItemPosition={ 'ctop'}
+                    // allowImageCrop = {true}
+                    
+                file={this.state.file}
+                onupdatefiles={fileItems => {
+                  this.setState({
+                    picture: fileItems.map(fileItem => fileItem.file)
+                  });
+                }}
                 />
-
-
 
 
 
