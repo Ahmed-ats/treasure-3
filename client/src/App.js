@@ -23,14 +23,16 @@ class App extends Component {
   componentDidMount = () => {
     API.getAllUsers()
     .then(res => {
-      console.log(res.data)
+      
       this.setState({
         items: res.data
+       
       })
-      console.log(this.state)
+      
     });
+    
   }
-
+  
   render() {
 
     
