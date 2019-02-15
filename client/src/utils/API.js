@@ -16,6 +16,7 @@ export default {
   // add profile image 
   userimage:  body => {
     const id = body.userId
+    
     return axios.put(`/api/userimage/${id} `,{imageurl: body.imgurl})
 
   },
@@ -32,7 +33,10 @@ export default {
 
   // Adds new item and pushes item.id to array in Users  
   postItem: (body) => {
-    console.log(body)
     return axios.post("/api/additem", { itemName: body.itemName, itemDescription: body.itemDescription, userId:body.userId, zipCode: body.zipCode, itemPicture: body.itemPicture })
   },
+
+  getAnItem : (id) => {
+     return axios.get(`/api/Item/${id}`)
+  }
 };

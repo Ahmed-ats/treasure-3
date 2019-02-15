@@ -130,6 +130,16 @@ app.get('/api/allusers', (req, res) => {
     .catch(err => res.statusMessage(400).json(err))
 });
 
+// get an item 
+app.get('/api/Item/:id', (req, res) => {
+  db.Item.find({_id:req.params.id}, req.body)
+     .then(data => {
+       res.json(data)
+     })
+   
+     .catch(err => res.status(400).json(err));
+ });
+
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));

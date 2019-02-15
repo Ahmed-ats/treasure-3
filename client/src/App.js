@@ -31,6 +31,7 @@ class App extends Component {
     .then(res => {
       this.setState({
         items: res.data
+       
       })
     });
     
@@ -68,6 +69,7 @@ class App extends Component {
         </div>
         <HomeImageList users={this.state.items} searchQuery={this.state.searchQuery}/>
       </div>
+    
     );
   }
 }

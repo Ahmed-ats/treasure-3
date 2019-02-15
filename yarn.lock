@@ -645,6 +645,16 @@ extglob@^2.0.4:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
+filepond-plugin-image-preview@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/filepond-plugin-image-preview/-/filepond-plugin-image-preview-4.0.2.tgz#2d41c4ae8d7a7223dbf5abf1993df61150e65b6c"
+  integrity sha512-RO5oMBuUqTLGAq8iZBsb485g5Lrx/yN9bNC19yOpniF4rMPnXCevvRLMPBWwKfJmMRLjsirNqesSJIxIedGygg==
+
+filepond@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/filepond/-/filepond-4.1.0.tgz#25abbaf9ded12f32b58d5ec5104bc7c6a1fe8b91"
+  integrity sha512-8HlgvPhIJ000N5ZWaIcb69MPrvmEMClVOSEYvtFYLtpgakl3mqSp4s24//f+wM6tX1RbdwBxyyxHvJWVSKcmaw==
+
 fill-range@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/fill-range/-/fill-range-4.0.0.tgz#d544811d428f98eb06a63dc402d2403c328c38f7"
@@ -1686,10 +1696,10 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-is@^16.8.1:
-  version "16.8.1"
-  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.1.tgz#a80141e246eb894824fb4f2901c0c50ef31d4cdb"
-  integrity sha512-ioMCzVDWvCvKD8eeT+iukyWrBGrA3DiFYkXfBsVYIRdaREZuBjENG+KjrikavCLasozqRWTwFUagU/O4vPpRMA==
+react-filepond@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/react-filepond/-/react-filepond-7.0.1.tgz#caf96526287140884a31a1476b8328d9d6ecdee2"
+  integrity sha512-PitNM44JP0K5hXnkSYV3HRlkObsWbhqaJRWizMrdHpS3pPz9/iyiOGmRpc+4T4ST3vblmiUTLRYq/+1bDcSqQw==
 
 read-pkg@^3.0.0:
   version "3.0.0"

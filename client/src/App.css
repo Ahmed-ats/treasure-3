@@ -1,5 +1,8 @@
 .App {
-  text-align: center;
+  font-family: 'Pirata One', cursive;
+   text-align: center;
+   background-image: url("./images/background.jpg");
+   
 }
 
 .App-logo {
@@ -8,15 +11,16 @@
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+   font-family: 'Pirata One', cursive;
+  font-size: 40px
 }
 
 .App-intro {
+ 
   font-size: large;
 }
+
+
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
