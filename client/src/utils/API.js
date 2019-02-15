@@ -21,6 +21,10 @@ export default {
 
   },
 
+  searchItems: (query) => {
+    return axios.get(`/api/filtereditems/${query}`)
+  },
+
   deleteItem: (id) => {
     return axios.post(`/api/deleteitem/${id}`)
   },
