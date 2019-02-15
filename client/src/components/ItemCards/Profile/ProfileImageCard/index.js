@@ -1,13 +1,8 @@
 import React from 'react';
-import API from '../../../../utils/API';
 import EditItem from '../../EditItems'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
- 
-const handleDeleteItem = (id) => {
-    API.deleteItem(id);
-    window.location.reload()
-}
+
 
 const ImageCard = (props) => {
     
@@ -24,7 +19,7 @@ const ImageCard = (props) => {
                     
                     <FontAwesomeIcon 
                     icon="trash"
-                    onClick={ () => { if(window.confirm("Are you sure you want to delete this item?")) handleDeleteItem(props._id)} } 
+                    onClick={ () => { if(window.confirm("Are you sure you want to delete this item?")) props.deleteMethod(props._id)} } 
                     size="lg"
                     />
                     <FontAwesomeIcon 

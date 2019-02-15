@@ -14,6 +14,7 @@ const ImageList = (props) => {
         username={object.username}
         _id = {object._id}
         updateMethod = {props.updateMethod}
+        deleteMethod = {props.deleteMethod}
         />
     })
     

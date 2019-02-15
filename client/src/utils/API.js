@@ -21,7 +21,7 @@ export default {
   },
 
   deleteItem: (id) => {
-    return axios.get(`/api/deleteitem/${id}`)
+    return axios.post(`/api/deleteitem/${id}`)
   },
 
   editItem: (body) => {

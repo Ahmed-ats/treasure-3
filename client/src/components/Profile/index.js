@@ -4,7 +4,6 @@ import API from '../../utils/API';
 import { Link } from 'react-router-dom';
 import ProfileImage from './ProfileImage';
 import AddPic from './AddPic';
-import EditItem from '../ItemCards/EditItems'
 import ProfileImageList from '../ItemCards/Profile/ProfileImageList'
 
 
@@ -32,46 +31,60 @@ class Profile extends Component {
           userId: res.data._id,
           picture: res.data.imageurl,
           items: res.data.items,
-          updated: false
+          updated: false,
+          deletedBool: false
         })
       })
     }
   }
 
-  checkIfItemsUpdate(id) {
+  checkIfItemsUpdate() {
     console.log(this.state.updated)
     this.setState({
       updated: true
     })
-    
+  }
+
+  deleteItem(id) {
+    console.log(id)
+    API.deleteItem(id)
+    this.setState({
+      deletedBool: true
+    })
+      
   }
 
   componentDidUpdate() {
-    console.log(this.state.updated)
-     if (this.state.updated == true) {
+
+    if (this.state.updated === true) {
       API.getUser(this.state.userId).then(res => {
-        console.log(res)
         this.setState({
           items: res.data.items,
           updated: false
         })
       });
+    } 
+
+    else if (this.state.deletedBool === true) {
+      console.log(this.state)
+      API.getUser(this.state.userId).then(res => {
+          this.setState({
+            items: res.data.items,
+            deletedBool: false
+          })
+      })
     }
+
   }
 
 
-  componentDidMount(id) {
-    
-    console.log(this.state)  
+  componentDidMount() {
     this.checkIfUserExists();
-   
-  }
+  };
 
   render() {
     return (
       <div className="container Profile">
-        <h1>On the profile page!</h1>
-        
         <ProfileImage  userpicture = {this.state.picture} />
          <br></br>
         <AddPic userId={this.state.userId}/>
@@ -82,10 +95,10 @@ class Profile extends Component {
 
         <Link to="/">Go home</Link>
 
-
         <ProfileImageList 
         itemObj={this.state.items} 
         updateMethod={this.checkIfItemsUpdate.bind(this)}
+        deleteMethod={this.deleteItem.bind(this)}
         />
       </div>
     )

@@ -1,13 +1,6 @@
 import React from 'react';
 import API from '../../utils/API';
 
-
-
-
-
-
-
-
 class ItemInputCard extends React.Component {
     constructor(props) {
         super(props);
