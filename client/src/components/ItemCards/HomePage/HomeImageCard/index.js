@@ -3,8 +3,6 @@ import API from '../../../../utils/API';
 
 
 class HomeImageCard extends React.Component {
-       
-    
     
     constructor(props) {
         super(props);
@@ -16,9 +14,7 @@ class HomeImageCard extends React.Component {
             itemPicture: '',
             zipCode: '',
            
-        };
-
-         
+        };  
        
     }
      
@@ -47,9 +43,9 @@ class HomeImageCard extends React.Component {
                         <h6 className="card-subtitle mb-2 text-muted">Location: {item.zipCode}</h6>
                         <p className="card-text">Posted By: {this.props.user}</p>
                         <button className="btn btn-primary" data-toggle="modal"
-                                data-target="#profileCard" 
-                                onClick={this.handleItemInfo.bind(this, item._id)}
-                                             >Check item </button>
+                            data-target="#profileCard"
+                            onClick={this.handleItemInfo.bind(this, item._id)}
+                        >Check item </button>
 
                     </div>
                     <div class="modal fade" id="profileCard" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
@@ -77,16 +73,16 @@ class HomeImageCard extends React.Component {
                                     <button type="button" className="btn btn-primary">Message Owner</button>
                                 </div>
                             </div>
+                        </div>
                     </div>
-                 </div>
                 </div>
             </div>
         );
     })
 
-    return (
-        <div>{Card}</div>
-    )
-}
+        return (
+            <div>{Card}</div>
+        )
+    }
 }
 export default HomeImageCard;

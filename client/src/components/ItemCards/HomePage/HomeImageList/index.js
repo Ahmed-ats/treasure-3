@@ -9,6 +9,7 @@ const HomeImageList = (props) => {
         user={user.username}
         items={user.items}
         getId={props.getId}
+        searchQuery={props.searchQuery}
         />
     })
     

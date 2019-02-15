@@ -6,7 +6,6 @@ import ProfileImage from './ProfileImage';
 import AddPic from './AddPic';
 import ProfileImageList from '../ItemCards/Profile/ProfileImageList'
 
-
 class Profile extends Component {
 
   state = {
@@ -42,6 +41,45 @@ class Profile extends Component {
     this.checkIfUserExists();
   }
 
+  checkIfItemsUpdate() {
+    console.log(this.state.updated)
+    this.setState({
+      updated: true
+    })
+  }
+
+  deleteItem(id) {
+    console.log(id)
+    API.deleteItem(id)
+    this.setState({
+      deletedBool: true
+    })
+      
+  }
+
+  componentDidUpdate() {
+
+    if (this.state.updated === true) {
+      API.getUser(this.state.userId).then(res => {
+        this.setState({
+          items: res.data.items,
+          updated: false
+        })
+      });
+    } 
+
+    else if (this.state.deletedBool === true) {
+      console.log(this.state)
+      API.getUser(this.state.userId).then(res => {
+          this.setState({
+            items: res.data.items,
+            deletedBool: false
+          })
+      })
+    }
+
+  }
+
   render() {
 
     return (
@@ -58,8 +96,11 @@ class Profile extends Component {
 
         <Link to="/">Go home</Link>
 
-
-        <ProfileImageList itemObj={this.state.items} />
+        <ProfileImageList 
+        itemObj={this.state.items} 
+        updateMethod={this.checkIfItemsUpdate.bind(this)}
+        deleteMethod={this.deleteItem.bind(this)}
+        />
       </div>
     )
   }
