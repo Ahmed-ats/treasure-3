@@ -6,7 +6,6 @@ import ProfileImage from './ProfileImage';
 import AddPic from './AddPic';
 import ProfileImageList from '../ItemCards/Profile/ProfileImageList'
 
-
 class Profile extends Component {
 
   state = {
@@ -15,7 +14,6 @@ class Profile extends Component {
     picture: "",
     userId:"",
     items: [],
-    updateCounter: 0
   };
 
   checkIfUserExists() {
