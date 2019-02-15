@@ -1,7 +1,7 @@
 .App {
-  font-family: 'Pirata One', cursive;
+ 
    text-align: center;
-   background-image: url("./images/background.jpg");
+   
    
 }
 
@@ -11,7 +11,7 @@
 }
 
 .App-header {
-   font-family: 'Pirata One', cursive;
+  font-family: 'Oleo Script Swash Caps', cursive;
   font-size: 40px
 }
 
