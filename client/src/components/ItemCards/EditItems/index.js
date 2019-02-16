@@ -74,7 +74,7 @@ class EditItem extends React.Component {
                             </div>
 
                             <div class="modal-footer">
-                                <button type="button" className="btn btn-primary"
+                                <button type="button" className="btn btn-secondary"
                                 onClick={this.handlePostItem}
                                 data-dismiss="modal"
                                 >

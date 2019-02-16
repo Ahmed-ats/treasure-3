@@ -1,6 +1,11 @@
 .App {
-  font-family: 'Pirata One', cursive;
+ 
    text-align: center;
+
+   background-image: url("./images/whitewoodbg.jpg");
+   background-repeat: no-repeat;
+   background-size:  cover;
+
    
 }
 
@@ -10,7 +15,7 @@
 }
 
 .App-header {
-   font-family: 'Pirata One', cursive;
+  font-family: 'Oleo Script Swash Caps', cursive;
   font-size: 40px
 }
 

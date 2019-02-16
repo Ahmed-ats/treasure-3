@@ -41,7 +41,7 @@ class Search extends Component {
                     id="search"
                     onChange={this.handleChange} 
                     />
-                    <button className="btn btn-primary" type="button"
+                    <button className="btn btn-secondary" type="button" 
                     onClick={() =>{
                         this.props.handleSearchSubmit(this.state.search);
                         this.setState({

@@ -1,14 +1,12 @@
+.myNav{
+    background-color:  #48D1CC;
+  }
 .navbar-brand{
-    font-family: 'Pirata One', cursive;
+    font-family: 'Oleo Script Swash Caps', cursive;
     font-size: 37px;
     color: black;
      };
- 
-  .my-nav{
-      background-color: red
-      ;
-  }
-
-  .nav-link{
+  
+.nav-link{
       color: black
   }
