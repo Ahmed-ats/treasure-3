@@ -19,21 +19,24 @@ class HomeImageCard extends React.Component {
     }
      
     handleItemInfo = (id, e ) => {
+        
             API.getAnItem(id).then(res => {
+                console.log(res)
                 this.setState({
                     itemName: res.data[0].itemName,
                     itemDescription: res.data[0].itemDescription,
                     itemPicture: res.data[0].itemPicture,
                     zipCode: res.data[0].zipCode 
                 })
-                console.log(this.state.itemDescription)
-            })
+            }).then(
+            
+            )
      }
     
     render() {
-   
+       
     var Card = this.props.items.map(item => {
-        
+        // console.log(this.props.user)
         return (
             <div className="conatiner">
                 <div className="card">
@@ -48,7 +51,16 @@ class HomeImageCard extends React.Component {
                         >Check item </button>
 
                     </div>
-                    <div class="modal fade" id="profileCard" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+                    
+                </div>
+            </div>
+        );
+    })
+
+        return (
+            <React.Fragment>
+             
+                     <div class="modal fade" id="profileCard" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -75,13 +87,12 @@ class HomeImageCard extends React.Component {
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        );
-    })
+                        
+                           
+                            <div>{Card}</div>
 
-        return (
-            <div>{Card}</div>
+            </React.Fragment>
+            
         )
     }
 }

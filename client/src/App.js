@@ -13,6 +13,7 @@ class App extends Component {
 
   state = {
     items: [],
+    users: [],
     searchQuery: '',
     searchBool: false
   };
@@ -28,6 +29,14 @@ class App extends Component {
 
   componentDidMount = () => {
     API.getAllUsers()
+    .then(res => {
+      this.setState({
+        users: res.data
+       
+      })
+    });
+
+    API.getAllItems()
     .then(res => {
       this.setState({
         items: res.data
@@ -67,7 +76,11 @@ class App extends Component {
           <Search handleSearchSubmit={this.handleSearchSubmit.bind(this)}/>
           <h2>Welcome </h2>
         </div>
-        <HomeImageList users={this.state.items} searchQuery={this.state.searchQuery}/>
+        <HomeImageList 
+        
+        items = {this.state.items}
+        users={this.state.users} 
+        searchQuery={this.state.searchQuery}/>
       </div>
     
     );

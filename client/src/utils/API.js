@@ -38,5 +38,8 @@ export default {
 
   getAnItem : (id) => {
      return axios.get(`/api/Item/${id}`)
-  }
+  },
+   getAllItems : () => {
+     return axios.get('/api/allItems')
+   }
 };

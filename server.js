@@ -130,6 +130,13 @@ app.get('/api/allusers', (req, res) => {
     .catch(err => res.statusMessage(400).json(err))
 });
 
+app.get('/api/allItems', (req, res) => {
+  db.Item.find({})
+    .then(data => {
+      res.json(data)})
+    .catch(err => res.statusMessage(400).json(err))
+});
+
 // get an item 
 app.get('/api/Item/:id', (req, res) => {
   db.Item.find({_id:req.params.id}, req.body)

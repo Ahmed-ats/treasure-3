@@ -85,7 +85,7 @@ class ItemInputCard extends React.Component {
           method: 'POST',
           body: data
         }).then((response) => {
-            
+            console.log(response)
             response.json()
                 .then((body) => {
                     console.log(body)
