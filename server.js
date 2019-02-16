@@ -105,8 +105,8 @@ app.post('/api/deleteitem/:id', isAuthenticated, (req, res) => {
     .catch(err => res.status(400).json(err));
 });
 
+//EDIT ITEMS
 app.post('/api/edititem/:id', isAuthenticated, (req, res) => {
-  
   db.Item.updateOne(
     {_id: req.params.id},
     {
@@ -129,6 +129,24 @@ app.get('/api/allusers', (req, res) => {
       res.json(data)})
     .catch(err => res.statusMessage(400).json(err))
 });
+
+
+//ROUTE FOR SEARCHING ITEMS, MATCHES
+app.get('/api/filtereditems/:query', (req, res) => {
+  db.User.find({})
+  .populate({
+    path: "items",
+    match: {$or: [
+      { 'itemName': { $regex: '.*' + req.params.query + '.*', '$options' : 'i' }},
+      { 'itemDescription' : { $regex: '.*' + req.params.query + '.*', '$options' : 'i'}}
+    ]}
+  })
+  .then(data => {
+    res.json(data)
+  })
+})
+
+
 
 // get an item 
 app.get('/api/Item/:id', (req, res) => {

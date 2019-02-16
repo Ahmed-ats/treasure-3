@@ -85,8 +85,7 @@ class Profile extends Component {
 
     return (
       <div className="container Profile">
-        <h1></h1>
-
+        
         <ProfileImage userpicture={this.state.picture} />
         <br></br>
         <AddPic userId={this.state.userId} onSuccess={this.getUserData} />
