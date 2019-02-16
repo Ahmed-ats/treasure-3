@@ -59,9 +59,9 @@ class Navbar extends Component {
             return (
                 <ul className="navbar-nav">
                     <li className="nav-item">
-                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#itemInputModal">
+                        <button type="button" className="btn btn-link" data-toggle="modal" data-target="#itemInputModal">
                             List Item
-                    </button>
+                        </button>
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link" to="/profile">Hello: {this.state.username} </Link>
@@ -97,7 +97,7 @@ class Navbar extends Component {
                 <ItemInputCard userId={this.props.user} />
                 <Signup />
                 <Login />
-                <nav className="navbar my-nav navbar-expand-lg">
+                <nav className="navbar myNav navbar-expand-lg">
                     <div className="container">
                         <Link className="navbar-brand" to="/">Treasure</Link>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

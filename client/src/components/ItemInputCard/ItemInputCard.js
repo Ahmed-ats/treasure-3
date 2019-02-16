@@ -2,17 +2,10 @@ import React from 'react';
 import API from '../../utils/API';
 import { FilePond , registerPlugin} from 'react-filepond';
 import 'filepond/dist/filepond.min.css';
-
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css';
+import "../ItemInputCard/iteminput.css"
 registerPlugin(FilePondPluginImagePreview)
-
-
-
-
-
-
-
 
 class ItemInputCard extends React.Component {
     constructor(props) {
@@ -24,7 +17,7 @@ class ItemInputCard extends React.Component {
             itemDescription: '',
             itemPicture: '',
             zipCode: '',
-            files: []
+            files: ''
         };
 
          
@@ -64,60 +57,36 @@ class ItemInputCard extends React.Component {
             })
         )
 
-        window.location.reload()
-    }
-    // handleGetItem = (e) => {
-    //     const { itemName, itemDescription, itemPicture, zipCode } = this.state;
-    //     const newItem = {
-    //         itemName, 
-    //         itemDescription,
-    //         itemPicture,
-    //         zipCode
-    //     }
         
-    //     API.getItem(newItem)
-    //     this.setState({
-    //         itemName: "",
-    //         itemDescription: "",
-    //         itemPicture: "",
-    //         username:"",
-    //         zipCode:"",
-           
-    //     })
+    }
+  
+  
 
-    // }
-    
-
-    handleUploadImage(e) {
-        console.log(this.state.files)
+    handleUploadImage = (e) => {
         e.preventDefault();
         const data = new FormData();
         data.append('file', this.state.files[0] );
         data.append('category', 'image');
-               
+      
         fetch('https://www.fileconvrtr.com/api/convert/file?apiKey=a8f545dbb31244a5b081a8cc6bdf37f7',{
           method: 'POST',
           body: data
         }).then((response) => {
             
-        response.json()
-        .then((body) => {
-            console.log(body)
-            this.setState({
-                itemPicture: body.s3Url  
-            })
-            this.handlePostItem();
-            
-            });
+            response.json()
+                .then((body) => {
+                    console.log(body)
+                    this.setState({
+                        itemPicture: body.s3Url
+                    })
+                    this.handlePostItem();
+
+                });
             
         });
         
     }
         
-    
-
-
-   
 
     
     render() {
@@ -137,9 +106,9 @@ class ItemInputCard extends React.Component {
                                 
                                 <form onSubmit={this.handlePostItem}>
 
-                                    <div class="form-group">
+                                    <div className="form-group">
                                         <label for="exampleFormControlSelect1">Categories</label>
-                                        <select class="form-control" id="exampleFormControlSelect1">
+                                        <select className="form-control" id="exampleFormControlSelect1">
                                             <option>Appliancies</option>
                                             <option>Clothes</option>
                                             <option>Cars/Trucks</option>
@@ -147,7 +116,6 @@ class ItemInputCard extends React.Component {
                                             <option>Other</option>
                                         </select>
                                     </div>
-
 
                                     <div className="form-group" > Item Name
                                         <input className="form-control"
@@ -157,9 +125,6 @@ class ItemInputCard extends React.Component {
                                             onChange={this.handleInputChange} />
                                     </div>
 
-
-                                   
-
                                     <div className="form-group" > Zip Code
                                         <input className="form-control"
                                             name="zipCode"
@@ -168,49 +133,38 @@ class ItemInputCard extends React.Component {
                                             value={this.state.zipCode}
                                         />
                                     </div>
-
                                   
-                                        <div class="form-group"> Item Description
-                                           
-                                            <textarea class="form-control"  
-                                                name="itemDescription"
-                                                placeholder="Describe your item"
-                                                rows = " 3"
-                                                value={this.state.itemDescription}
-                                                onChange={this.handleInputChange}>
-                                            </textarea>
-                                        </div>
+                                    <div className="form-group"> Item Description
+                                          
+                                        <textarea className="form-control"
+                                            name="itemDescription"
+                                            placeholder="Describe your item"
+                                            rows=" 3"
+                                            value={this.state.itemDescription}
+                                            onChange={this.handleInputChange}>
+                                        </textarea>
+                                    </div>
                                  
 
                                     <br></br>
                                    
-                                    <FilePond ref={ref => this.pond = ref}
-                                        files={this.state.files}
-                                        allowMultiple={true}
-
-
-                                            onupdatefiles={fileItems => {
-                                            // Set currently active file objects to this.state
+                                    <FilePond
+                                       
+                                        file={this.state.file}
+                                        // allowMultiple={true}
+                                        onupdatefiles={fileItems => {
                                             this.setState({
                                                 files: fileItems.map(fileItem => fileItem.file)
                                             });
                                         }}
                                     />
-                                   
-
                                     
-                                    
-                                  
-                            
-                                        
-                                    </form>
-                                    
-
-                               
+                                </form>
+            
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary" onClick={this.handleUploadImage}> Post Item</button>
+                            <div className="modal-footer">
+                        
+                                <button type="button" className="btn btn-secondary" onClick={this.handleUploadImage} data-dismiss="modal"> Post Item</button>
                             </div>
                         </div>
                     </div>

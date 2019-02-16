@@ -4,22 +4,19 @@ import React from 'react';
 // import './addpic.css'
 import AuthService from '../../AuthService';
 import API from '../../../utils/API';
-// TO DO:
-// 1. REMOVE REACT NATIVE
-// 2. CHANGE TO BOOTSTRAP MODALS
 
 
-const customStyles = {
+// const customStyles = {
 
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)'
-  }
-};
+//   content: {
+//     top: '50%',
+//     left: '50%',
+//     right: 'auto',
+//     bottom: 'auto',
+//     marginRight: '-50%',
+//     transform: 'translate(-50%, -50%)'
+//   }
+// };
 
 
 
@@ -70,7 +67,7 @@ class AddPic extends React.Component {
   render() {
     return (
       <div>
-        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        <button type="button" className="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">
           Add/Change Picture
 </button>
         <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -98,7 +95,7 @@ class AddPic extends React.Component {
               </div>
               <div className="modal-footer">
 
-                <button type="button" className="btn btn-primary" onClick={this.handleProfileImage}>Save changes</button>
+                <button type="button" className="btn btn-primary" onClick={this.handleProfileImage} data-dismiss="modal">Save changes</button>
               </div>
             </div>
           </div>

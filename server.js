@@ -7,6 +7,8 @@ const morgan = require('morgan'); // used to see requests
 const app = express();
 const db = require('./models');
 const PORT = process.env.PORT || 3001;
+const bodyParser = require('body-parser')
+app.use(bodyParser.json())
 
 // Setting CORS so that any website can
 // Access our API
@@ -82,10 +84,11 @@ app.put('/api/userimage/:id', isAuthenticated  , (req, res) => {
 
  //POST ITEMS ROUTE
 app.post('/api/additem', isAuthenticated, (req, res) => {
-  
   db.Item.create(req.body)
     .then(dbItem => {
-      return db.User.findOneAndUpdate({_id: dbItem.userId}, { $push: { items: dbItem._id }}, { new :true});
+      console.log(req.body)
+      return db.User.findOneAndUpdate({_id: dbItem.userId}, { 
+        $push: { items: dbItem._id }}, { new :true});
     })
     .then(dbUser =>{
       res.json(dbUser)
@@ -93,6 +96,32 @@ app.post('/api/additem', isAuthenticated, (req, res) => {
     .catch(err => res.status(400).json(err));
 });
 
+//DELETE ITEMS
+app.post('/api/deleteitem/:id', isAuthenticated, (req, res) => {
+  db.Item.deleteOne({_id:req.params.id})
+    .then(data => {
+      res.send(data)
+    })
+    .catch(err => res.status(400).json(err));
+});
+
+app.post('/api/edititem/:id', isAuthenticated, (req, res) => {
+  
+  db.Item.updateOne(
+    {_id: req.params.id},
+    {
+      $set: {
+        itemName: req.body.itemName,
+        itemDescription: req.body.itemDescription
+      }
+    }
+  )
+  .then(dbItem => {
+    console.log("Edited!")
+  })
+})
+
+//ROUTE FOR HOMEPAGE ITEM DISPLAY
 app.get('/api/allusers', (req, res) => {
   db.User.find({})
     .populate("items")
@@ -100,6 +129,16 @@ app.get('/api/allusers', (req, res) => {
       res.json(data)})
     .catch(err => res.statusMessage(400).json(err))
 });
+
+// get an item 
+app.get('/api/Item/:id', (req, res) => {
+  db.Item.find({_id:req.params.id}, req.body)
+     .then(data => {
+       res.json(data)
+     })
+   
+     .catch(err => res.status(400).json(err));
+ });
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {

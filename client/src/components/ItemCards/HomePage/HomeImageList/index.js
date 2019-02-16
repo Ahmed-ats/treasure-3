@@ -2,12 +2,14 @@ import React from 'react';
 import HomeImageCard from '../HomeImageCard'
 
 const HomeImageList = (props) => {
-
+     
     var Image = props.users.map(user => {
+       
         return <HomeImageCard
         user={user.username}
         items={user.items}
         getId={props.getId}
+        searchQuery={props.searchQuery}
         />
     })
     
