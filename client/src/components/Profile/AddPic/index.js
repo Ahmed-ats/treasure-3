@@ -67,7 +67,7 @@ class AddPic extends React.Component {
   render() {
     return (
       <div>
-        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        <button type="button" className="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">
           Add/Change Picture
 </button>
         <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
