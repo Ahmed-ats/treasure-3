@@ -59,7 +59,7 @@ class Navbar extends Component {
             return (
                 <ul className="navbar-nav">
                     <li className="nav-item">
-                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#itemInputModal">
+                        <button type="button" className="btn btn-link" data-toggle="modal" data-target="#itemInputModal">
                             List Item
                         </button>
                     </li>

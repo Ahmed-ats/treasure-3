@@ -84,7 +84,7 @@ class Profile extends Component {
 
     return (
       <div className="container Profile">
-        <h1>On the profile page!</h1>
+        <h1></h1>
 
         <ProfileImage userpicture={this.state.picture} />
         <br></br>
