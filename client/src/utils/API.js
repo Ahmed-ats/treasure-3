@@ -33,7 +33,7 @@ export default {
 
   // Adds new item and pushes item.id to array in Users  
   postItem: (body) => {
-    return axios.post("/api/additem", { itemName: body.itemName, itemDescription: body.itemDescription, userId:body.userId, zipCode: body.zipCode, itemPicture: body.itemPicture })
+    return axios.post("/api/additem", { itemName: body.itemName, itemDescription: body.itemDescription, user:body.userId, zipCode: body.zipCode, itemPicture: body.itemPicture })
   },
 
   getAnItem : (id) => {
