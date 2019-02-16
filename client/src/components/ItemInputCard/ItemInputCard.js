@@ -2,9 +2,9 @@ import React from 'react';
 import API from '../../utils/API';
 import { FilePond , registerPlugin} from 'react-filepond';
 import 'filepond/dist/filepond.min.css';
-
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css';
+import "../ItemInputCard/iteminput.css"
 registerPlugin(FilePondPluginImagePreview)
 
 class ItemInputCard extends React.Component {
@@ -164,7 +164,7 @@ class ItemInputCard extends React.Component {
                             </div>
                             <div className="modal-footer">
                         
-                                <button type="button" className="btn btn-primary" onClick={this.handleUploadImage} data-dismiss="modal"> Post Item</button>
+                                <button type="button" className="btn btn-secondary" onClick={this.handleUploadImage} data-dismiss="modal"> Post Item</button>
                             </div>
                         </div>
                     </div>

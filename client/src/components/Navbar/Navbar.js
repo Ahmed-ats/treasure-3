@@ -97,7 +97,7 @@ class Navbar extends Component {
                 <ItemInputCard userId={this.props.user} />
                 <Signup />
                 <Login />
-                <nav className="navbar my-nav navbar-expand-lg">
+                <nav className="navbar myNav navbar-expand-lg">
                     <div className="container">
                         <Link className="navbar-brand" to="/">Treasure</Link>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

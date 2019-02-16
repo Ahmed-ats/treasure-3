@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import ProfileImage from './ProfileImage';
 import AddPic from './AddPic';
 import ProfileImageList from '../ItemCards/Profile/ProfileImageList'
+import '../Profile/profile.css'
 
 class Profile extends Component {
 

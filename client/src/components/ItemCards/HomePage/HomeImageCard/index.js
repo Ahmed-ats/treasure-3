@@ -42,7 +42,7 @@ class HomeImageCard extends React.Component {
                         <h5 className="card-title">{item.itemName}</h5>
                         <h6 className="card-subtitle mb-2 text-muted">Location: {item.zipCode}</h6>
                         <p className="card-text">Posted By: {this.props.user}</p>
-                        <button className="btn btn-primary" data-toggle="modal"
+                        <button className="btn btn-secondary" data-toggle="modal"
                             data-target="#profileCard"
                             onClick={this.handleItemInfo.bind(this, item._id)}
                         >Check item </button>
