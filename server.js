@@ -87,7 +87,7 @@ app.post('/api/additem', isAuthenticated, (req, res) => {
   db.Item.create(req.body)
     .then(dbItem => {
       console.log(req.body)
-      return db.User.findOneAndUpdate({_id: dbItem.userId}, { 
+      return db.User.findOneAndUpdate({_id: dbItem.user}, { 
         $push: { items: dbItem._id }}, { new :true});
     })
     .then(dbUser =>{
@@ -132,6 +132,7 @@ app.get('/api/allusers', (req, res) => {
 
 app.get('/api/allItems', (req, res) => {
   db.Item.find({})
+  .populate("user")
     .then(data => {
       res.json(data)})
     .catch(err => res.statusMessage(400).json(err))
