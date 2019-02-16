@@ -14,7 +14,8 @@ class App extends Component {
   state = {
     items: [],
     searchQuery: '',
-    searchBool: false
+    searchBool: false,
+    cleared: false
   };
 
   handleLogout = () => {
@@ -39,9 +40,21 @@ class App extends Component {
 
   componentDidUpdate = () => {
     if (this.state.searchBool === true) {
-      console.log("It's true")
-    } else {
-      console.log("It's false")
+      API.searchItems(this.state.searchQuery)
+        .then(res => {
+          this.setState({
+            items: res.data,
+            searchBool: false
+          })
+        })
+    } else if (this.state.cleared === false) {
+      API.getAllUsers()
+      .then(res => {
+        this.setState({
+          items: res.data,
+          cleared: true
+        })
+      });
     }
   }
   
@@ -54,7 +67,8 @@ class App extends Component {
     } else {
       this.setState({
         searchQuery: "none",
-        searchBool: false
+        searchBool: false,
+        cleared: false
       })
     }
   }

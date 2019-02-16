@@ -137,10 +137,9 @@ app.get('/api/filtereditems/:query', (req, res) => {
   .populate({
     path: "items",
     match: {$or: [
-    { 'itemName': { $regex: '.*' + req.params.query + '.*', '$options' : 'i' }},
-    { 'itemDescription' : { $regex: '.*' + req.params.query + '.*', '$options' : 'i'}}
-      ]
-    }
+      { 'itemName': { $regex: '.*' + req.params.query + '.*', '$options' : 'i' }},
+      { 'itemDescription' : { $regex: '.*' + req.params.query + '.*', '$options' : 'i'}}
+    ]}
   })
   .then(data => {
     res.json(data)
