@@ -12,7 +12,6 @@ const Auth = new AuthService();
 class App extends Component {
   state = {
     items: [],
-    users: [],
     searchQuery: "",
     searchBool: false,
     cleared: false
@@ -35,23 +34,23 @@ class App extends Component {
     });
   };
 
-  componentDidUpdate = () => {
-    if (this.state.searchBool === true) {
-      API.searchItems(this.state.searchQuery).then(res => {
-        this.setState({
-          items: res.data,
-          searchBool: false
-        });
-      });
-    } else if (this.state.cleared === false) {
-      API.getAllUsers().then(res => {
-        this.setState({
-          items: res.data,
-          cleared: true
-        });
-      });
-    }
-  };
+  // componentDidUpdate = () => {
+  //   if (this.state.searchBool === true) {
+  //     API.searchItems(this.state.searchQuery).then(res => {
+  //       this.setState({
+  //         items: res.data,
+  //         searchBool: false
+  //       });
+  //     });
+  //   } else if (this.state.cleared === false) {
+  //     API.getAllUsers().then(res => {
+  //       this.setState({
+  //         items: res.data,
+  //         cleared: true
+  //       });
+  //     });
+  //   }
+  // };
 
   handleSearchSubmit = query => {
     if (query !== "") {
@@ -77,7 +76,6 @@ class App extends Component {
 
         <HomeImageList
           items={this.state.items}
-          users={this.state.users}
           searchQuery={this.state.searchQuery}
         />
       </div>
