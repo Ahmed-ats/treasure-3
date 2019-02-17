@@ -43,19 +43,18 @@ class Profile extends Component {
   }
 
   checkIfItemsUpdate() {
-    console.log(this.state.updated)
+
     this.setState({
       updated: true
     })
   }
 
   deleteItem(id) {
-    console.log(id)
     API.deleteItem(id)
     this.setState({
       deletedBool: true
     })
-      
+
   }
 
   componentDidUpdate() {
@@ -67,15 +66,15 @@ class Profile extends Component {
           updated: false
         })
       });
-    } 
+    }
 
     else if (this.state.deletedBool === true) {
       console.log(this.state)
       API.getUser(this.state.userId).then(res => {
-          this.setState({
-            items: res.data.items,
-            deletedBool: false
-          })
+        this.setState({
+          items: res.data.items,
+          deletedBool: false
+        })
       })
     }
 
@@ -85,21 +84,36 @@ class Profile extends Component {
 
     return (
       <div className="container Profile">
-        
-        <ProfileImage userpicture={this.state.picture} />
-        <br></br>
-        <AddPic userId={this.state.userId} onSuccess={this.getUserData} />
 
-        <p>Full Name: {this.state.fullname}</p>
-        <p>Email: {this.state.email}</p>
-        <p>Zipcode: {this.state.zipcode} </p>
+
+        <br></br>
+
+        <div className="card w-25 p-3 text-center">
+          <div className="card-body">
+
+            <ProfileImage userpicture={this.state.picture} />
+            <br></br><br></br>
+            <AddPic userId={this.state.userId} onSuccess={this.getUserData} />
+            <br></br>
+            <ul className="list-group list-group-flush">
+
+              <li className="list-group-item">
+                <p className="card-text">Full Name: {this.state.fullname}</p>
+                <p className="card-text">Email: {this.state.email}</p>
+                <p className="card-text">Zipcode: {this.state.zipcode}</p>
+              </li>
+
+            </ul>
+
+          </div>
+        </div>
 
         <Link to="/">Go home</Link>
 
-        <ProfileImageList 
-        itemObj={this.state.items} 
-        updateMethod={this.checkIfItemsUpdate.bind(this)}
-        deleteMethod={this.deleteItem.bind(this)}
+        <ProfileImageList
+          itemObj={this.state.items}
+          updateMethod={this.checkIfItemsUpdate.bind(this)}
+          deleteMethod={this.deleteItem.bind(this)}
         />
       </div>
     )

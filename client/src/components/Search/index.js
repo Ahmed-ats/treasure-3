@@ -24,10 +24,7 @@ class Search extends Component {
     };
 
     checkState = () => {
-        API.searchItems(this.state.search)
-        .then(res => {
-            console.log(res)
-        })
+        
     }
     
     render() {
@@ -49,12 +46,6 @@ class Search extends Component {
                         })
                     }}
                     >Search</button>
-
-                    <button className="btn btn-primary" type="button"
-                    onClick={() =>{
-                        this.checkState();
-                    }}
-                    >Check State</button>
                 </form>
             </div>
 
