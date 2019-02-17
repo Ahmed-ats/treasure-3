@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import ImageCard from "../ProfileImageCard";
 
 
@@ -22,10 +22,7 @@ const ImageList = (props) => {
     
    
     return(
-
-        <div className="card-columns">
-          {Image}
-        </div>
+      <div className="card-columns">{Image}</div>
     )
 };
 

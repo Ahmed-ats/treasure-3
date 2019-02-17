@@ -43,13 +43,13 @@ class Profile extends Component {
   }
 
   checkIfItemsUpdate() {
+    
     this.setState({
       updated: true
     })
   }
 
   deleteItem(id) {
-    console.log(id)
     API.deleteItem(id)
     this.setState({
       deletedBool: true
