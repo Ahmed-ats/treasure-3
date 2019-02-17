@@ -27,7 +27,7 @@ class HomeImageCard extends React.Component {
         })
     }
 
-    render() {
+  render() {
 
         var Card = this.props.items.map(item => {
             return (
