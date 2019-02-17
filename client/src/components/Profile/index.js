@@ -42,7 +42,6 @@ class Profile extends Component {
   }
 
   checkIfItemsUpdate() {
-    console.log(this.state.updated)
     this.setState({
       updated: true
     })

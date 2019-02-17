@@ -33,6 +33,7 @@ class HomeImageCard extends React.Component {
             return (
                 <div className="conatiner">
                     <div className="card">
+                    
                         <img className="card-img-top" src={item.itemPicture || "https://via.placeholder.com/350x350"} alt={this.props.itemName} />
                         <div className="card-body">
                             <h5 className="card-title">{item.itemName}</h5>
@@ -51,6 +52,7 @@ class HomeImageCard extends React.Component {
 
         return (
             <div>
+                
 
                 <div class="modal fade" id="profileCard" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">

@@ -1,11 +1,12 @@
 import React from 'react';
 import ImageCard from "../ProfileImageCard";
 
+
 const ImageList = (props) => {
 
-   
     var Image = props.itemObj.map(object => {
-        return <ImageCard 
+        return (
+        <ImageCard 
         itemName={object.itemName} 
         zipCode={object.zipCode}
         itemDescription={object.itemDescription}
@@ -15,7 +16,8 @@ const ImageList = (props) => {
         _id = {object._id}
         updateMethod = {props.updateMethod}
         deleteMethod = {props.deleteMethod}
-        />
+        /> 
+        )
     })
     
    

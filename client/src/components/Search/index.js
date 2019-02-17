@@ -24,10 +24,7 @@ class Search extends Component {
     };
 
     checkState = () => {
-        API.searchItems(this.state.search)
-        .then(res => {
-            console.log(res)
-        })
+        
     }
     
     render() {
