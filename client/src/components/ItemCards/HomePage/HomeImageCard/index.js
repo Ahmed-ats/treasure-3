@@ -18,7 +18,7 @@ class HomeImageCard extends React.Component {
             <h6 className="card-subtitle mb-2 text-muted">
               Location: {item.zipCode}
             </h6>
-            <p className="card-text"></p>
+            <p className="card-text">Posted by: </p>
             <button
               className="btn btn-primary"
               data-toggle="modal"

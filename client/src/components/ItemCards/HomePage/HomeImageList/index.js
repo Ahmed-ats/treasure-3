@@ -2,6 +2,7 @@ import React from "react";
 import HomeImageCard from "../HomeImageCard";
 
 const HomeImageList = props => {
+    console.log(props)
   var Images = props.items.map(item => {
     return <HomeImageCard item={item} searchQuery={props.searchQuery} />;
   });
