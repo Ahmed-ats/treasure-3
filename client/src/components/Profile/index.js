@@ -1,14 +1,13 @@
-import React, { Component } from 'react';
-import withAuth from '../withAuth';
-import API from '../../utils/API';
-import { Link } from 'react-router-dom';
-import ProfileImage from './ProfileImage';
-import AddPic from './AddPic';
-import ProfileImageList from '../ItemCards/Profile/ProfileImageList'
-import '../Profile/profile.css'
+import React, { Component } from "react";
+import withAuth from "../withAuth";
+import API from "../../utils/API";
+import { Link } from "react-router-dom";
+import ProfileImage from "./ProfileImage";
+import AddPic from "./AddPic";
+import ProfileImageList from "../ItemCards/Profile/ProfileImageList";
+import "../Profile/profile.css";
 
 class Profile extends Component {
-
   state = {
     fullname: "",
     email: "",
@@ -26,16 +25,15 @@ class Profile extends Component {
         userId: res.data._id,
         picture: res.data.imageurl,
         items: res.data.items
-      })
-    })
-  }
+      });
+    });
+  };
 
   checkIfUserExists() {
     if (!this.props.user) {
-      window.location.replace("/")
-    }
-    else {
-      this.getUserData()
+      window.location.replace("/");
+    } else {
+      this.getUserData();
     }
   }
   componentDidMount() {
@@ -43,65 +41,55 @@ class Profile extends Component {
   }
 
   checkIfItemsUpdate() {
-    
     this.setState({
       updated: true
-    })
+    });
   }
 
   deleteItem(id) {
-    API.deleteItem(id)
+    API.deleteItem(id);
     this.setState({
       deletedBool: true
-    })
-      
+    });
   }
 
   componentDidUpdate() {
-
     if (this.state.updated === true) {
       API.getUser(this.state.userId).then(res => {
         this.setState({
           items: res.data.items,
           updated: false
-        })
+        });
       });
-    } 
-
-    else if (this.state.deletedBool === true) {
-      console.log(this.state)
+    } else if (this.state.deletedBool === true) {
+      console.log(this.state);
       API.getUser(this.state.userId).then(res => {
-          this.setState({
-            items: res.data.items,
-            deletedBool: false
-          })
-      })
+        this.setState({
+          items: res.data.items,
+          deletedBool: false
+        });
+      });
     }
-
   }
 
   render() {
-
     return (
       <div className="container Profile">
-        
         <ProfileImage userpicture={this.state.picture} />
-        <br></br>
+        <br />
         <AddPic userId={this.state.userId} onSuccess={this.getUserData} />
 
         <p>Full Name: {this.state.fullname}</p>
         <p>Email: {this.state.email}</p>
         <p>Zipcode: {this.state.zipcode} </p>
 
-        <Link to="/">Go home</Link>
-
-        <ProfileImageList 
-        itemObj={this.state.items} 
-        updateMethod={this.checkIfItemsUpdate.bind(this)}
-        deleteMethod={this.deleteItem.bind(this)}
+        <ProfileImageList
+          itemObj={this.state.items}
+          updateMethod={this.checkIfItemsUpdate.bind(this)}
+          deleteMethod={this.deleteItem.bind(this)}
         />
       </div>
-    )
+    );
   }
 }
 
