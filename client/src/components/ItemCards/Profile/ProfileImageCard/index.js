@@ -2,8 +2,6 @@ import React from 'react';
 import API from '../../../../utils/API'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-//Change to a class
-
 class ImageCard extends React.Component {
 
     state = {}
