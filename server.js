@@ -166,22 +166,21 @@ app.get("/api/allItems", (req, res) => {
 
 //ROUTE FOR SEARCHING ITEMS, MATCHES
 app.get("/api/filtereditems/:query", (req, res) => {
-  db.Item.find({})
-    .populate({
-      path: "user",
-      match: {
-        $or: [
-          {
-            itemName: { $regex: ".*" + req.params.query + ".*", $options: "i" }
-          },
-          {
-            itemDescription: {
-              $regex: ".*" + req.params.query + ".*",
-              $options: "i"
-            }
-          }
-        ]
+  db.Item.find({
+    $or: [
+      {
+        itemName: { $regex: ".*" + req.params.query + ".*", $options: "i" }
+      },
+      {
+        itemDescription: {
+          $regex: ".*" + req.params.query + ".*",
+          $options: "i"
+        }
       }
+    ]
+  })
+    .populate({
+      path: "user"
     })
     .then(data => {
       res.json(data);

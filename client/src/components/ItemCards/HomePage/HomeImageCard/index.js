@@ -18,9 +18,9 @@ class HomeImageCard extends React.Component {
             <h6 className="card-subtitle mb-2 text-muted">
               Location: {item.zipCode}
             </h6>
-            <p className="card-text">Posted By: {item.user.username}</p>
+            <p className="card-text">Posted by:{item.user.username} </p>
             <button
-              className="btn btn-primary"
+              className="btn btn-secondary"
               data-toggle="modal"
               data-target={`#${modalId}`}
               // onClick={this.handleItemInfo.bind(this, item._id)}
@@ -83,7 +83,7 @@ class HomeImageCard extends React.Component {
                 >
                   Close
                 </button>
-                <button type="button" className="btn btn-primary">
+                <button type="button" className="btn btn-secondary">
                   Message Owner
                 </button>
               </div>

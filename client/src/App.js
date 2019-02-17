@@ -34,23 +34,24 @@ class App extends Component {
     });
   };
 
-  // componentDidUpdate = () => {
-  //   if (this.state.searchBool === true) {
-  //     API.searchItems(this.state.searchQuery).then(res => {
-  //       this.setState({
-  //         items: res.data,
-  //         searchBool: false
-  //       });
-  //     });
-  //   } else if (this.state.cleared === false) {
-  //     API.getAllUsers().then(res => {
-  //       this.setState({
-  //         items: res.data,
-  //         cleared: true
-  //       });
-  //     });
-  //   }
-  // };
+  componentDidUpdate = () => {
+    if (this.state.searchBool === true) {
+      API.searchItems(this.state.searchQuery).then(res => {
+        console.log(res);
+        this.setState({
+          items: res.data,
+          searchBool: false
+        });
+      });
+    } else if (this.state.cleared === false) {
+      API.getAllItems().then(res => {
+        this.setState({
+          items: res.data,
+          cleared: true
+        });
+      });
+    }
+  };
 
   handleSearchSubmit = query => {
     if (query !== "") {
@@ -69,15 +70,28 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <Search handleSearchSubmit={this.handleSearchSubmit.bind(this)} />
-        </div>
+      <div className=" container">
+        <div className="App">
+          <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+              <h1 class="display-4">Fluid jumbotron</h1>
+              <p class="lead">
+                This is a modified jumbotron that occupies the entire horizontal
+                space of its parent.
+              </p>
+              <div className="App-header">
+                <Search
+                  handleSearchSubmit={this.handleSearchSubmit.bind(this)}
+                />
+              </div>
+            </div>
+          </div>
 
-        <HomeImageList
-          items={this.state.items}
-          searchQuery={this.state.searchQuery}
-        />
+          <HomeImageList
+            items={this.state.items}
+            searchQuery={this.state.searchQuery}
+          />
+        </div>
       </div>
     );
   }

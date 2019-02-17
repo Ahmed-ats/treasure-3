@@ -654,10 +654,6 @@ filepond-plugin-image-preview@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/filepond-plugin-image-preview/-/filepond-plugin-image-preview-4.0.2.tgz#2d41c4ae8d7a7223dbf5abf1993df61150e65b6c"
   integrity sha512-RO5oMBuUqTLGAq8iZBsb485g5Lrx/yN9bNC19yOpniF4rMPnXCevvRLMPBWwKfJmMRLjsirNqesSJIxIedGygg==
-filepond-plugin-image-preview@^4.0.3:
-  version "4.0.3"
-  resolved "https://registry.yarnpkg.com/filepond-plugin-image-preview/-/filepond-plugin-image-preview-4.0.3.tgz#9e8a6561455751498da29e4a6501ab828dc0d4a2"
-  integrity sha512-umWUAM9Jd2W66/bcT/KWxBh1mmcSJxYi/L0aSxJSRnEebOGtJlNZ3y9nnB6MMNmt+Ybi9ttto6mmc4OPyfbfuQ==
 
 filepond-plugin-image-resize@^2.0.2:
   version "2.0.2"
@@ -1715,10 +1711,6 @@ react-filepond@^7.0.1:
   resolved "https://registry.yarnpkg.com/react-filepond/-/react-filepond-7.0.1.tgz#caf96526287140884a31a1476b8328d9d6ecdee2"
   integrity sha512-PitNM44JP0K5hXnkSYV3HRlkObsWbhqaJRWizMrdHpS3pPz9/iyiOGmRpc+4T4ST3vblmiUTLRYq/+1bDcSqQw==
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 8d8eec24ad83199f481f74624db875e9e77c2ae4
 react-fontawesome@^1.6.1:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/react-fontawesome/-/react-fontawesome-1.6.1.tgz#eddce17e7dc731aa09fd4a186688a61793a16c5c"
@@ -1726,10 +1718,6 @@ react-fontawesome@^1.6.1:
   dependencies:
     prop-types "^15.5.6"
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 8d8eec24ad83199f481f74624db875e9e77c2ae4
 react-is@^16.8.1:
   version "16.8.2"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.2.tgz#09891d324cad1cb0c1f2d91f70a71a4bee34df0f"
