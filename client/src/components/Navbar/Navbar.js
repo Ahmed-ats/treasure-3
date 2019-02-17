@@ -76,7 +76,7 @@ class Navbar extends Component {
           <li className="nav-item">
             <button
               type="button"
-              className="btn btn-link"
+              className="btn btn-secondary"
               data-toggle="modal"
               data-target="#itemInputModal"
             >
@@ -84,15 +84,19 @@ class Navbar extends Component {
             </button>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/profile">
-              Hello: {this.state.username}{" "}
-            </Link>
+            <button type="button" className="btn btn-secondary" href="/">
+              Go home
+            </button>
           </li>
           <li className="nav-item">
-            {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-            <a className="nav-link" href="/" onClick={() => this.Auth.logout()}>
+            <button
+              type="button"
+              className="btn btn-secondary"
+              href="/"
+              onClick={() => this.Auth.logout()}
+            >
               Logout
-            </a>
+            </button>
           </li>
         </ul>
       );
