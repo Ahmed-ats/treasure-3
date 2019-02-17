@@ -60,7 +60,7 @@ class AddPic extends React.Component {
       <div>
         <button
           type="button"
-          className="btn btn-primary"
+          className="btn btn-secondary"
           data-toggle="modal"
           data-target="#exampleModal"
         >
@@ -113,7 +113,7 @@ class AddPic extends React.Component {
               <div className="modal-footer">
                 <button
                   type="button"
-                  className="btn btn-primary"
+                  className="btn btn-secondary"
                   onClick={this.handleProfileImage}
                   data-dismiss="modal"
                 >

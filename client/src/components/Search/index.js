@@ -46,12 +46,6 @@ class Search extends Component {
                         })
                     }}
                     >Search</button>
-
-                    <button className="btn btn-primary" type="button"
-                    onClick={() =>{
-                        this.checkState();
-                    }}
-                    >Check State</button>
                 </form>
             </div>
 
