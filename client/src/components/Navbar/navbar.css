@@ -1,12 +1,15 @@
-.myNav{
-    background-color:  #48D1CC;
-  }
-.navbar-brand{
-    font-family: 'Oleo Script Swash Caps', cursive;
-    font-size: 37px;
-    color: black;
-     };
-  
-.nav-link{
-      color: black
-  }
+.myNav {
+  background-color: #738598;
+}
+.navbar-brand {
+  font-family: "Oleo Script Swash Caps", cursive;
+  font-size: 37px;
+  color: black;
+}
+
+.btn {
+  background: #1cb3c8;
+}
+.btn:hover {
+  color: #1cb3c8;
+}

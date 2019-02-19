@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import API from '../../utils/API'
 
 
 // Search route will comb through itemName and itemDescription
@@ -6,6 +7,7 @@ import React, { Component } from 'react';
 // POSSIBLE SOLUTION IS TO CREATE NEW BACKEND ROUTE THAT CONDITIONALLY POPULATES USERS BASED ON SEARCH PARAMETER
 //INITIAL SEARCH PARAMETER FILTERS ALL ITEMS THAT MATCH CRIETERA THEN DB.USER.FINDALL.POPULATE
 // OR add filter as props in homeimage card
+//Best way may be to make a backend route that filters--reset the state to all users if no search is found
 
 
 class Search extends Component {
@@ -21,7 +23,10 @@ class Search extends Component {
         
     };
 
-
+    checkState = () => {
+        
+    }
+    
     render() {
         return (
             <div>

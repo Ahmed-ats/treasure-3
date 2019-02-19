@@ -1,24 +1,14 @@
-import React from 'react';
-import HomeImageCard from '../HomeImageCard'
+import React from "react";
+import HomeImageCard from "../HomeImageCard";
+import "./index.css";
 
-const HomeImageList = (props) => {
-     
-    var Image = props.users.map(user => {
-       
-        return <HomeImageCard
-        user={user.username}
-        items={user.items}
-        getId={props.getId}
-        searchQuery={props.searchQuery}
-        />
-    })
-    
+const HomeImageList = props => {
+  console.log(props);
+  var Images = props.items.map(item => {
+    return <HomeImageCard item={item} searchQuery={props.searchQuery} />;
+  });
 
-    return(
-        <div className="card-columns">
-          {Image}
-        </div>
-    )
+  return <div className="card-columns">{Images}</div>;
 };
 
 export default HomeImageList;

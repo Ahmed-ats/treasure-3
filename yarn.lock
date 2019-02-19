@@ -645,10 +645,20 @@ extglob@^2.0.4:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
+filepond-plugin-image-crop@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/filepond-plugin-image-crop/-/filepond-plugin-image-crop-2.0.1.tgz#2fff9300840334a75f7c97f7291c6010fb50345b"
+  integrity sha512-ott2tZz/PDokTVFvkWc5KLT1cuXCBlsbtAFPpCC+w/VMMOQpH+kkGguABj0ENQfn1aeF/tGrIlkY/Ds7xHrL7g==
+
 filepond-plugin-image-preview@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/filepond-plugin-image-preview/-/filepond-plugin-image-preview-4.0.2.tgz#2d41c4ae8d7a7223dbf5abf1993df61150e65b6c"
   integrity sha512-RO5oMBuUqTLGAq8iZBsb485g5Lrx/yN9bNC19yOpniF4rMPnXCevvRLMPBWwKfJmMRLjsirNqesSJIxIedGygg==
+
+filepond-plugin-image-resize@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/filepond-plugin-image-resize/-/filepond-plugin-image-resize-2.0.2.tgz#be29db736f2467f9b8457f9731ae08cd1b0b762b"
+  integrity sha512-UjM+dru03/OtWNSYql+sBj3bQJGnU19nwfCFeH8rXZj5pUzvxY0myjjQ0GQllugkGQld4igEGMyBeTJOjx0LsQ==
 
 filepond@^4.1.0:
   version "4.1.0"

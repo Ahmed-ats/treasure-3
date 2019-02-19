@@ -74,9 +74,9 @@ class Login extends Component {
                   <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
               </div>
-              <div className="modal-footer">
+              {/* <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" >Close</button>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
