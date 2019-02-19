@@ -75,27 +75,23 @@ class Profile extends Component {
   render() {
     return (
       <div className="container Profile">
-        <ProfileImage userpicture={this.state.picture} />
         <br />
-        <AddPic userId={this.state.userId} onSuccess={this.getUserData} />
-
-        <div className="card w-25 p-3 text-center">
+        <br />
+        <div className="card  w-25 p-3 text-center" id="user-info-card">
           <div className="card-body">
             <ProfileImage userpicture={this.state.picture} />
             <br />
             <br />
             <AddPic userId={this.state.userId} onSuccess={this.getUserData} />
             <br />
-            <ul className="list-group list-group-flush">
-              <li className="list-group-item">
-                <p className="card-text">Full Name: {this.state.fullname}</p>
-                <p className="card-text">Email: {this.state.email}</p>
-                <p className="card-text">Zipcode: {this.state.zipcode}</p>
-              </li>
-            </ul>
+            <div className="info-div" />
+            <p className="card-text">Full Name: {this.state.fullname}</p>
+            <p className="card-text">Email: {this.state.email}</p>
+            <p className="card-text">Zipcode: {this.state.zipcode}</p>
           </div>
         </div>
-
+        <br />
+        <br />
         <ProfileImageList
           itemObj={this.state.items}
           updateMethod={this.checkIfItemsUpdate.bind(this)}

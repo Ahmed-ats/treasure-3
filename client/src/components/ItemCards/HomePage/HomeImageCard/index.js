@@ -11,14 +11,21 @@ class HomeImageCard extends React.Component {
           <img
             className="card-img-top"
             src={item.itemPicture || "https://via.placeholder.com/350x350"}
-            alt={this.props.itemName}
+            alt={item.itemName}
           />
           <div className="card-body">
-            <h5 className="card-title">{item.itemName}</h5>
+            <h5 className="card-title">
+              {item.itemName.substring(0, 1).toUpperCase() +
+                item.itemName.substring(1)}
+            </h5>
+            <h6 className="card-subtitle mb-2 ">
+              {item.transactionType.substring(0, 1).toUpperCase() +
+                item.transactionType.substring(1)}
+            </h6>
             <h6 className="card-subtitle mb-2 text-muted">
               Location: {item.zipCode}
             </h6>
-            <p className="card-text">Posted by:{item.user.username} </p>
+            {/* <p className="card-text">Posted by:{item.user.username} </p> */}
             <button
               className="btn btn-secondary"
               data-toggle="modal"
@@ -67,11 +74,17 @@ class HomeImageCard extends React.Component {
                     alt={item.itemName}
                   />
                   <div className="card-body">
-                    <h5 className="card-title">{item.itemName}</h5>
+                    <h5 className="card-title">
+                      {item.itemName.substring(0, 1).toUpperCase() +
+                        item.itemName.substring(1)}
+                    </h5>
                     <h6 className="card-subtitle mb-2 text-muted">
                       Location: {item.zipCode}
                     </h6>
-                    <p className="card-text">{item.itemDescription}</p>
+                    <p className="card-text">
+                      {item.itemDescription.substring(0, 1).toUpperCase() +
+                        item.itemDescription.substring(1)}
+                    </p>
                   </div>
                 </div>
               </div>
