@@ -2,8 +2,8 @@
   background-color: #d3d3d3;
 }
 
-#user-info-card {
-  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  margin: auto; */
-  /* width: 4000px; */
+.user-card {
+  /* border: red solid 2px; */
+  height: 93%;
+  margin-top: -46px
 }

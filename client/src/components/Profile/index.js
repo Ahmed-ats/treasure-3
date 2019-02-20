@@ -6,6 +6,7 @@ import ProfileImage from "./ProfileImage";
 import AddPic from "./AddPic";
 import ProfileImageList from "../ItemCards/Profile/ProfileImageList";
 import "../Profile/profile.css";
+import Chat from "./Chat";
 
 class Profile extends Component {
   state = {
@@ -75,22 +76,29 @@ class Profile extends Component {
   render() {
     return (
       <div className="container Profile">
+      <div className="row">
+      <div className="col-md-4">
         <br />
         <br />
-        <div className="card  w-30 p-3 text-center" id="user-info-card">
-          <div className="card-body">
+          <div className="user-card">
             <ProfileImage userpicture={this.state.picture} />
             <br />
             <br />
             <AddPic userId={this.state.userId} onSuccess={this.getUserData} />
             <br />
             <div className="info-div" />
-            <p className="card-text">Full Name: {this.state.fullname}</p>
-            <p className="card-text">Email: {this.state.email}</p>
-            <p className="card-text">Zipcode: {this.state.zipcode}</p>
+            <p className="card-text">{this.state.fullname}</p>
+            <p className="card-text">{this.state.email}</p>
+            <p className="card-text">{this.state.zipcode}</p>
           </div>
         </div>
+        <div className="col-md-8">
+        <Chat />
+        </div>
+        </div>
+        
         <br />
+        
         <br />
         <ProfileImageList
           itemObj={this.state.items}
