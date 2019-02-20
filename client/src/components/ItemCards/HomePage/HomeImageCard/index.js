@@ -32,7 +32,7 @@ class HomeImageCard extends React.Component {
               data-target={`#${modalId}`}
               // onClick={this.handleItemInfo.bind(this, item._id)}
             >
-              Check item{" "}
+              {"View item"}
             </button>
           </div>
         </div>
