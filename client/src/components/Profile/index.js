@@ -84,12 +84,14 @@ class Profile extends Component {
             <ProfileImage userpicture={this.state.picture} />
             <br />
             <br />
+            <div className="info-div">
             <AddPic userId={this.state.userId} onSuccess={this.getUserData} />
             <br />
-            <div className="info-div" />
+            
             <p className="card-text">{this.state.fullname}</p>
             <p className="card-text">{this.state.email}</p>
             <p className="card-text">{this.state.zipcode}</p>
+            </div>
           </div>
         </div>
         <div className="col-md-8">

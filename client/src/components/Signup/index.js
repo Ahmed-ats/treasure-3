@@ -94,7 +94,7 @@ class Signup extends Component {
                       id="zipcode"
                       onChange={this.handleChange} />
                   </div>
-                  <button type="submit" className="btn btn-primary">Submit</button>
+                  <button type="submit" className="btn btn-secondary">Submit</button>
                 </form>
               </div>
               {/* <div className="modal-footer">
