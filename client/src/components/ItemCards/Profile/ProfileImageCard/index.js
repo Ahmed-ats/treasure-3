@@ -45,7 +45,7 @@ class ImageCard extends React.Component {
 
         <div>
 
-            <div className="card" key={this.props.itemName}>
+            <div className="card shadow p-3 mb-5 bg-white rounded" key={this.props.itemName}>
                 <img className="card-img-top" src={this.props.picture || "https://via.placeholder.com/350x350"} alt={this.props.itemName} />
                     <div className="card-body">
                         <h5 className="card-title">{this.props.itemName}</h5>

@@ -8,7 +8,7 @@ const HomeImageList = props => {
     return <HomeImageCard item={item} searchQuery={props.searchQuery} />;
   });
 
-  return <div className="card-columns">{Images}</div>;
+  return <div className="card-columns ">{Images}</div>;
 };
 
 export default HomeImageList;
