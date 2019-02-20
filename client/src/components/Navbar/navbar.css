@@ -11,10 +11,17 @@
   background: #1cb3c8;
   color: aliceblue;
   margin: 10 10 10 10;
-}
-.btn:hover {
-  color: white;
-}
+  border-radius: 20%;
+} 
+
+/* #itemListing {
+  background: #1cb3c8;
+  color: aliceblue;
+  margin: 10 10 10 10;
+  border-radius: 20%;
+} */
+
+
 li {
   margin: 3px;
 }

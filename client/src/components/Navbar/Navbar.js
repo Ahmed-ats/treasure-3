@@ -74,14 +74,15 @@ class Navbar extends Component {
       return (
         <ul className="navbar-nav">
           <li className="nav-item">
-            <button
-              type="button"
-              className="btn  btn-dark"
+            <a
+              role="button"
+              className="btn btn-secondary"
+              id="itemListing"
               data-toggle="modal"
               data-target="#itemInputModal"
             >
               List Item
-            </button>
+            </a>
           </li>
           <li className="nav-item">
             <a className="btn btn-secondary  " href="/" role="button">

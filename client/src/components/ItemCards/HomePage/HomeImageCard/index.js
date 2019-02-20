@@ -18,7 +18,7 @@ class HomeImageCard extends React.Component {
               {item.itemName.substring(0, 1).toUpperCase() +
                 item.itemName.substring(1)}
             </h5>
-            <h6 className="card-subtitle mb-2 ">
+            <h6 className="card-subtitle mb-2">
               {item.transactionType.substring(0, 1).toUpperCase() +
                 item.transactionType.substring(1)}
             </h6>
