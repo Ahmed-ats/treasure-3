@@ -1,4 +1,5 @@
 .card-columns {
     column-count: 5;
-    display: inline-block
-}
+    display: inline-block;
+    
+  }
