@@ -17,6 +17,7 @@ class ItemInputCard extends React.Component {
       itemDescription: "",
       itemPicture: "",
       zipCode: "",
+      transactionType: "trade",
       files: ""
     };
 
@@ -32,8 +33,14 @@ class ItemInputCard extends React.Component {
   };
 
   handlePostItem = () => {
-    const itemPicture = this.state.itemPicture;
-    const { itemName, itemDescription, zipCode } = this.state;
+    // const itemPicture = this.state.itemPicture;
+    const {
+      itemName,
+      itemDescription,
+      zipCode,
+      itemPicture,
+      transactionType
+    } = this.state;
     let userId = this.props.userId.id;
 
     const newItem = {
@@ -41,7 +48,8 @@ class ItemInputCard extends React.Component {
       itemDescription,
       itemPicture,
       zipCode,
-      userId
+      userId,
+      transactionType
     };
 
     API.postItem(newItem).then(
@@ -49,7 +57,8 @@ class ItemInputCard extends React.Component {
         itemName: "",
         itemDescription: "",
         itemPicture: "",
-        zipCode: ""
+        zipCode: "",
+        transactionType
       })
     );
   };
@@ -145,8 +154,23 @@ class ItemInputCard extends React.Component {
                   </div>
 
                   <div className="form-group">
-                    {"Item Description "}
+                    <label for="exampleFormControlSelect1">
+                      {" Is This Item for Trade or Giveways "}
+                    </label>
+                    <select
+                      className="form-control"
+                      id="exampleFormControlSelect1"
+                      name="transactionType"
+                      onChange={this.handleInputChange}
+                      value={this.state.transactionType}
+                    >
+                      <option value="trade">Trade</option>
+                      <option value="giveaway">Giveawy</option>
+                    </select>
+                  </div>
 
+                  {"Item Description "}
+                  <div className="form-group">
                     <textarea
                       className="form-control"
                       name="itemDescription"

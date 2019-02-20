@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-import API from '../../utils/API'
-
+import React, { Component } from "react";
+// import API from "../../utils/API";
 
 // Search route will comb through itemName and itemDescription
 
@@ -9,48 +8,46 @@ import API from '../../utils/API'
 // OR add filter as props in homeimage card
 //Best way may be to make a backend route that filters--reset the state to all users if no search is found
 
-
 class Search extends Component {
-    state = {
+  state = {};
 
-    }
+  handleChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
 
-    handleChange = event => {
-        const { name, value } = event.target;
-        this.setState({
-            [name]: value
-        });
-        
-    };
+  checkState = () => {};
 
-    checkState = () => {
-        
-    }
-    
-    render() {
-        return (
-            <div>
-                <form className="form-inline my-2 my-lg-0">
-                    <input className="form-control mr-sm-2" 
-                    type="text" 
-                    placeholder="Search" 
-                    name="search"
-                    id="search"
-                    onChange={this.handleChange} 
-                    />
-                    <button className="btn btn-secondary" type="button" 
-                    onClick={() =>{
-                        this.props.handleSearchSubmit(this.state.search);
-                        this.setState({
-                            search: ''
-                        })
-                    }}
-                    >Search</button>
-                </form>
-            </div>
-
-        )
-    }
+  render() {
+    return (
+      <div>
+        <form className="form-inline justify-content-center ">
+          <input
+            className="form-control mr-sm-2"
+            type="text"
+            placeholder="Search"
+            name="search"
+            id="search"
+            onChange={this.handleChange}
+          />
+          <button
+            className="btn btn-secondary"
+            type="button"
+            onClick={() => {
+              this.props.handleSearchSubmit(this.state.search);
+              this.setState({
+                search: ""
+              });
+            }}
+          >
+            Search
+          </button>
+        </form>
+      </div>
+    );
+  }
 }
 
 export default Search;

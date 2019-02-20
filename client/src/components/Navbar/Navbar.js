@@ -40,7 +40,7 @@ class Navbar extends Component {
         <ul className="navbar-nav">
           <li className="nav-item dropdown">
             <button
-              className="nav-link dropdown-toggle btn btn-secondary"
+              className="nav-link dropdown-toggle btn btn-secondary "
               href="/"
               id="navbarDropdown"
               data-toggle="dropdown"
@@ -76,7 +76,7 @@ class Navbar extends Component {
           <li className="nav-item">
             <button
               type="button"
-              className="btn btn-link"
+              className="btn  btn-dark"
               data-toggle="modal"
               data-target="#itemInputModal"
             >
@@ -84,15 +84,18 @@ class Navbar extends Component {
             </button>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/profile">
-              Hello: {this.state.username}{" "}
-            </Link>
+            <a className="btn btn-secondary  " href="/" role="button">
+              Go home
+            </a>
           </li>
           <li className="nav-item">
-            {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-            <a className="nav-link" href="/" onClick={() => this.Auth.logout()}>
+            <button
+              className="btn btn-secondary "
+              href="/"
+              onClick={() => this.Auth.logout()}
+            >
               Logout
-            </a>
+            </button>
           </li>
         </ul>
       );
@@ -101,8 +104,7 @@ class Navbar extends Component {
         <ul className="navbar-nav">
           <li className="nav-item">
             <button
-              type="button"
-              className="btn btn-primary"
+              className="btn btn-secondary  "
               data-toggle="modal"
               data-target="#exampleModalCenter"
             >
@@ -112,7 +114,7 @@ class Navbar extends Component {
           <li className="nav-item">
             <button
               type="button"
-              className="btn btn-primary"
+              className="btn btn-secondary  "
               data-toggle="modal"
               data-target="#LogInModal"
             >
@@ -130,14 +132,17 @@ class Navbar extends Component {
         <ItemInputCard userId={this.props.user} />
         <Signup />
         <Login />
-        <nav className="navbar myNav navbar-expand-lg">
+        <nav
+          className="navbar myNav navbar-expand-lg fixed-top  "
+          role="navigation"
+        >
+          <br />
           <div className="container">
             <Link className="navbar-brand" to="/">
               Treasure
             </Link>
             <button
               className="navbar-toggler"
-              type="button"
               data-toggle="collapse"
               data-target="#navbarNav"
               aria-controls="navbarNav"

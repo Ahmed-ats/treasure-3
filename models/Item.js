@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const ItemSchema = new Schema({
@@ -8,9 +8,9 @@ const ItemSchema = new Schema({
   },
   itemDescription: {
     type: String,
-    trim: true,
+    trim: true
   },
-  itemPicture:{
+  itemPicture: {
     type: String
   },
   user: {
@@ -23,16 +23,15 @@ const ItemSchema = new Schema({
   catagories: {
     type: String
   },
+  transactionType: {
+    type: "String"
+  },
   createdAt: {
     type: Date,
     default: Date.now
   }
 });
 
-
-
-
-
-const Item = mongoose.model('Item', ItemSchema);
+const Item = mongoose.model("Item", ItemSchema);
 
 module.exports = Item;

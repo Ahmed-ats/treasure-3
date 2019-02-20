@@ -9,7 +9,12 @@
 
 .btn {
   background: #1cb3c8;
+  color: aliceblue;
+  margin: 10 10 10 10;
 }
 .btn:hover {
-  color: #1cb3c8;
+  color: white;
+}
+li {
+  margin: 3px;
 }
