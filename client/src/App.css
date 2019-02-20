@@ -1,3 +1,6 @@
+body {
+  padding-top: 100px;
+}
 .App {
   text-align: center;
   /* background-color: #dfe2e2; */
@@ -18,6 +21,9 @@
 
 .App-intro {
   font-size: large;
+}
+.jumbotron {
+  clear: top;
 }
 
 @keyframes App-logo-spin {
