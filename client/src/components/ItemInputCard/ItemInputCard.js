@@ -85,7 +85,9 @@ class ItemInputCard extends React.Component {
         });
         this.handlePostItem();
       });
+      window.location.replace('/profile')
     });
+    
   };
 
   render() {
