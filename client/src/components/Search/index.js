@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 // import API from "../../utils/API";
 
 // Search route will comb through itemName and itemDescription
@@ -23,9 +24,9 @@ class Search extends Component {
   render() {
     return (
       <div>
-        <form className="form-inline justify-content-center ">
+        <form className="mr-lg-2 d-flex justify-content-md-center">
           <input
-            className="form-control mr-sm-2"
+            className="form-control mr-md-2"
             type="text"
             placeholder="Search"
             name="search"

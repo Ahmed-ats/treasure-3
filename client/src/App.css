@@ -3,8 +3,8 @@ body {
 }
 .App {
   text-align: center;
-  /* background-color: #dfe2e2; */
-  /* background-image: url("./images/whitewoodbg.jpg"); */
+  /* background-color: #dfe2e2;
+  background-image: url("./images/whitewoodbg.jpg"); */
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -15,8 +15,9 @@ body {
 }
 
 .App-header {
-  font-family: "Oleo Script Swash Caps", cursive;
   font-size: 40px;
+  text-align: center;
+ 
 }
 
 .App-intro {
@@ -24,8 +25,13 @@ body {
 }
 .jumbotron {
   clear: top;
+ 
 }
 
+ .display-4{
+  font-family: "Oleo Script Swash Caps", cursive
+ }
+ 
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
