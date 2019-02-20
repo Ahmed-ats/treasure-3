@@ -71,7 +71,7 @@ class Login extends Component {
                       id="pwd"
                       onChange={this.handleChange} />
                   </div>
-                  <button type="submit" className="btn btn-primary">Submit</button>
+                  <button type="submit" className="btn btn-secondary">Submit</button>
                 </form>
               </div>
               {/* <div className="modal-footer">
