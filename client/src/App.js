@@ -72,12 +72,11 @@ class App extends Component {
     return (
       <div className=" container">
         <div className="App">
-          <div class="jumbotron jumbotron-fluid">
+          <div class="jumbotron jumbotron-fluid shadow p-3 mb-5  rounded">
             <div class="container">
-              <h1 class="display-4">Fluid jumbotron</h1>
+              <h1 class="display-4">One person's trash is another's treasure...</h1>
               <p class="lead">
-                This is a modified jumbotron that occupies the entire horizontal
-                space of its parent.
+              Give and get stuff for free in your local community. Don't just throw it out, recycle and reuse! 
               </p>
               <div className="App-header">
                 <Search

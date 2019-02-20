@@ -7,7 +7,7 @@ class HomeImageCard extends React.Component {
     console.log(item);
     var Card = (
       <div className="conatiner">
-        <div className="card">
+        <div className="card shadow p-3 mb-5 bg-white rounded">
           <img
             className="card-img-top"
             src={item.itemPicture || "https://via.placeholder.com/350x350"}
@@ -32,7 +32,7 @@ class HomeImageCard extends React.Component {
               data-target={`#${modalId}`}
               // onClick={this.handleItemInfo.bind(this, item._id)}
             >
-              Check item{" "}
+              {"View item"}
             </button>
           </div>
         </div>
