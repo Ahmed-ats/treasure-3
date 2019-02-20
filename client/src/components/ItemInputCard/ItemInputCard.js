@@ -155,7 +155,7 @@ class ItemInputCard extends React.Component {
 
                   <div className="form-group">
                     <label for="exampleFormControlSelect1">
-                      {" Is This Item for Trade or Giveways "}
+                      {" Trade or Giveaway "}
                     </label>
                     <select
                       className="form-control"
@@ -165,7 +165,7 @@ class ItemInputCard extends React.Component {
                       value={this.state.transactionType}
                     >
                       <option value="trade">Trade</option>
-                      <option value="giveaway">Giveawy</option>
+                      <option value="giveaway">Giveaway</option>
                     </select>
                   </div>
 
