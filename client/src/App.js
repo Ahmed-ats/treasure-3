@@ -72,7 +72,7 @@ class App extends Component {
     return (
       <div className=" container">
         <div className="App">
-          <div class="jumbotron jumbotron-fluid">
+          <div class="jumbotron jumbotron-fluid shadow p-3 mb-5  rounded">
             <div class="container">
               <h1 class="display-4">One person's trash is another's treasure...</h1>
               <p class="lead">
