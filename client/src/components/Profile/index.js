@@ -77,7 +77,7 @@ class Profile extends Component {
       <div className="container Profile">
         <br />
         <br />
-        <div className="card  w-25 p-3 text-center" id="user-info-card">
+        <div className="card  w-30 p-3 text-center" id="user-info-card">
           <div className="card-body">
             <ProfileImage userpicture={this.state.picture} />
             <br />
